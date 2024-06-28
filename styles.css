@@ -1,0 +1,64 @@
+.contenedor {
+  width:90%;
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 0px;
+}
+
+.logo {
+  width: 130px;
+  height: auto;
+}
+
+.logo img {
+  width: 100%;
+  height: auto;
+}
+
+
+h2 {
+  text-align: center;
+  color: #4caf50;
+  margin-top: 10px;
+}
+
+.tabla-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.tabla {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ddd;
+  margin-bottom: 20px;
+  background-color: rgba(12, 37, 229, 0.1);
+  width: 90%;
+}
+
+.fila {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.fila:nth-child(odd) {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.celda {
+  flex: 1;
+  padding: 10px;
+  text-align: center;
+}
+
+.celda img {
+  max-width: 100px;
+  height: auto;
+}
