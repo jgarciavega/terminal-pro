@@ -1,18 +1,25 @@
 {
-  "name": "tt2",
+  "name": "terminaldos",
   "version": "1.0.0",
-  "main": "index.html",
+  "description": "programa para terminal api",
+  "main": "index.js",
+  "type": "module",
   "scripts": {
-    "dev": ""
+    "dev": "nodemon src/mysql.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "jorgegv",
+  "keywords": [
+    "api",
+    "node",
+    "nodejs"
+  ],
+  "author": "jorge ignacio, jazziel briones",
   "license": "ISC",
-  "description": "Control de llegadas y salidas de Buques del puerto de Pichilingue",
-  "devDependencies": {
-    "eslint": "9.5.0"
-  },
   "dependencies": {
-    "mysql": "^2.18.1"
+    "express": "^4.19.2",
+    "mysql2": "^3.10.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
   }
 }
