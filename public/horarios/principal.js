@@ -72,21 +72,43 @@ document.addEventListener("DOMContentLoaded", async function () {
   };
 
   try {
-      const response = await fetch('/getBarcos');
+      const response = await fetch('/getBarcosEntradas');
       const barcos = await response.json();
 
       const arribosRows = barcos.map(barco => [
-          barco.navieras,          
-          barco.buques,
+          barco.hora,          
+          barco.naviera,
+          barco.buque,
           barco.destino,
           barco.muelle,
           barco.atraque,
-          barco.estatus,
-          barco.hora
+          barco.estatus
       ]);
 
       createTableSection("ARRIBOS", arribosRows);
+
   } catch (error) {
       console.error('Error al obtener los datos:', error);
   }
+
+  try {
+    const response = await fetch('/getBarcosSalidas');
+    const barcos = await response.json();
+
+    const salidasRows = barcos.map(barco => [
+        barco.hora,          
+        barco.naviera,
+        barco.buque,
+        barco.destino,
+        barco.muelle,
+        barco.atraque,
+        barco.estatus
+    ]);
+
+    createTableSection("SALIDAS", salidasRows);
+
+} catch (error) {
+    console.error('Error al obtener los datos:', error);
+}
+
 });

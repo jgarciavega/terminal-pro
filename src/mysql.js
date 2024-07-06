@@ -14,10 +14,20 @@ const port = 3000;
 app.use(express.static(path.join(__dirname, '../public')));
 
 // Endpoint para obtener datos de los barcos
-app.get('/getBarcos', async (req, res) => {
+app.get('/getBarcosEntradas', async (req, res) => {
     try {
-        const [result] = await pool.query("SELECT navieras, buques, destino, muelle, atraque, estatus, hora FROM arribos");
-        res.json(result);
+        const [result] = await pool.query("SELECT naviera, buque, destino, muelle, atraque, estatus, hora FROM arribos");
+        res.json(result); 
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error al obtener los datos');
+    }
+});
+
+app.get('/getBarcosSalidas', async (req, res) => {
+    try {
+        const [result] = await pool.query("SELECT naviera, buque, destino, muelle, atraque, estatus, hora FROM salidas");
+        res.json(result); 
     } catch (error) {
         console.error(error);
         res.status(500).send('Error al obtener los datos');
@@ -31,5 +41,5 @@ app.get('/', (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log(`Servidor corriendo en http://localhost:${port}`);
+    console.log(`Servidor corriendo en http://192.168.0.250:${port}`);
 });
