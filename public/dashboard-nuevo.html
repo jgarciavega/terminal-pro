@@ -1,0 +1,2285 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal Dos - Panel Principal</title>
+</head>
+<body>
+
+<!-- ⚡ PANEL PRINCIPAL ULTRA ESPECTACULAR ⚡ -->
+<div class="ultra-modern-dashboard">
+  
+  <!-- 🌊 HERO SECTION ÉPICO 🌊 -->
+  <div class="epic-hero-section">
+    <!-- Fondo Animado Avanzado -->
+    <div class="advanced-animated-bg">
+      <div class="ocean-waves"></div>
+      <div class="floating-bubbles"></div>
+      <div class="light-rays"></div>
+      <div class="particle-system"></div>
+    </div>
+    
+    <!-- Contenido Principal del Hero -->
+    <div class="hero-main-content">
+      <div class="hero-left">
+        <div class="mega-icon-container">
+          <div class="rotating-ring"></div>
+          <div class="pulsing-core">
+            <img src="imagenes/Api.png" alt="API Logo" class="api-logo">
+          </div>
+          <div class="energy-particles"></div>
+        </div>
+        
+        <div class="hero-text-section">
+          <h1 class="mega-title">
+            <span class="title-line-1">TERMINAL</span>
+            <span class="title-line-2">DOS</span>
+          </h1>
+          <p class="epic-subtitle">🌊 Centro de Control Portuario Avanzado</p>
+          <div class="location-badge">
+            <span class="location-icon">📍</span>
+            <span>Puerto de La Paz, Baja California Sur</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="hero-right">
+        <div class="status-panel">
+          <div class="system-status">
+            <div class="status-light active"></div>
+            <span>Sistema Operativo</span>
+          </div>
+          <div class="live-clock" id="mega-clock">00:00:00</div>
+          <div class="date-display" id="mega-date">Cargando...</div>
+        </div>
+        
+        <div class="routes-display">
+          <div class="route-item active">
+            <div class="route-visual">
+              <div class="ship-icon">🚢</div>
+              <div class="route-line"></div>
+            </div>
+            <div class="route-details">
+              <span class="route-name">La Paz ↔ Mazatlán</span>
+              <span class="route-distance">284 millas náuticas</span>
+            </div>
+            <div class="route-status-indicator active"></div>
+          </div>
+          
+          <div class="route-item active">
+            <div class="route-visual">
+              <div class="ship-icon">⛵</div>
+              <div class="route-line"></div>
+            </div>
+            <div class="route-details">
+              <span class="route-name">La Paz ↔ Topolobampo</span>
+              <span class="route-distance">193 millas náuticas</span>
+            </div>
+            <div class="route-status-indicator active"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 🔥 MÉTRICAS ESPECTACULARES 🔥 -->
+  <div class="mega-metrics-section">
+    <div class="section-header">
+      <h2 class="section-title">📊 CENTRO DE COMANDO</h2>
+      <div class="title-glow"></div>
+    </div>
+    
+    <div class="metrics-grid">
+      <!-- Métrica de Arribos -->
+      <div class="metric-card arrivals">
+        <div class="card-bg-effect"></div>
+        <div class="card-header">
+          <div class="metric-icon">🚢</div>
+          <div class="sparkle-effects">✨💫⭐</div>
+        </div>
+        <div class="metric-content">
+          <div class="metric-number" id="arrivals-count">0</div>
+          <div class="metric-label">Arribos Hoy</div>
+          <div class="metric-trend positive">
+            <span class="trend-icon">📈</span>
+            <span>+18% vs ayer</span>
+          </div>
+        </div>
+        <div class="card-pulse arrivals-pulse"></div>
+      </div>
+      
+      <!-- Métrica de Salidas -->
+      <div class="metric-card departures">
+        <div class="card-bg-effect"></div>
+        <div class="card-header">
+          <div class="metric-icon">⛵</div>
+          <div class="sparkle-effects">🌟💫✨</div>
+        </div>
+        <div class="metric-content">
+          <div class="metric-number" id="departures-count">0</div>
+          <div class="metric-label">Salidas Hoy</div>
+          <div class="metric-trend positive">
+            <span class="trend-icon">📈</span>
+            <span>+12% vs ayer</span>
+          </div>
+        </div>
+        <div class="card-pulse departures-pulse"></div>
+      </div>
+      
+      <!-- Métrica de Rutas -->
+      <div class="metric-card routes">
+        <div class="card-bg-effect"></div>
+        <div class="card-header">
+          <div class="metric-icon">🗺️</div>
+          <div class="sparkle-effects">⭐🌟💫</div>
+        </div>
+        <div class="metric-content">
+          <div class="metric-number" id="routes-count">2</div>
+          <div class="metric-label">Rutas Activas</div>
+          <div class="metric-trend stable">
+            <span class="trend-icon">✅</span>
+            <span>100% operativas</span>
+          </div>
+        </div>
+        <div class="card-pulse routes-pulse"></div>
+      </div>
+      
+      <!-- Métrica de Embarcaciones -->
+      <div class="metric-card vessels">
+        <div class="card-bg-effect"></div>
+        <div class="card-header">
+          <div class="metric-icon">🛳️</div>
+          <div class="sparkle-effects">💫⭐✨</div>
+        </div>
+        <div class="metric-content">
+          <div class="metric-number" id="vessels-count">0</div>
+          <div class="metric-label">Embarcaciones</div>
+          <div class="metric-trend positive">
+            <span class="trend-icon">🚢</span>
+            <span>En operación</span>
+          </div>
+        </div>
+        <div class="card-pulse vessels-pulse"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 🌊 TABLAS DE ARRIBOS Y SALIDAS ÉPICAS 🌊 -->
+  <div class="epic-tables-section">
+    <div class="section-header">
+      <h2 class="section-title">🌊 OPERACIONES PORTUARIAS</h2>
+      <div class="title-glow"></div>
+    </div>
+    
+    <div class="tables-grid">
+      
+      <!-- Tabla de Arribos a La Paz -->
+      <div class="table-panel arrivals-panel">
+        <div class="panel-header">
+          <div class="panel-icon">🚢</div>
+          <h3 class="panel-title">Arribos a La Paz</h3>
+          <div class="records-count" id="arrivals-records">10 registros</div>
+        </div>
+        <div class="epic-table-container">
+          <table class="epic-table" id="arrivals-table">
+            <thead>
+              <tr>
+                <th>Naviera</th>
+                <th>Buque</th>
+                <th>Origen</th>
+                <th>Hora</th>
+                <th>Estado</th>
+              </tr>
+            </thead>
+            <tbody id="arrivals-tbody">
+              <tr>
+                <td colspan="5" style="text-align: center; padding: 30px; color: #ffffff;">
+                  <i style="font-size: 2rem; margin-bottom: 10px;">🚢</i>
+                  <p>Cargando arribos...</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="table-pagination">
+          <span class="pagination-info">Mostrando 1-5 de 10 registros</span>
+          <div class="pagination-controls">
+            <button class="pagination-btn active">1</button>
+            <button class="pagination-btn">2</button>
+            <button class="pagination-btn">...</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabla de Salidas de La Paz -->
+      <div class="table-panel departures-panel">
+        <div class="panel-header">
+          <div class="panel-icon">⛵</div>
+          <h3 class="panel-title">Salidas de La Paz</h3>
+          <div class="records-count" id="departures-records">10 registros</div>
+        </div>
+        <div class="epic-table-container">
+          <table class="epic-table" id="departures-table">
+            <thead>
+              <tr>
+                <th>Naviera</th>
+                <th>Buque</th>
+                <th>Destino</th>
+                <th>Hora</th>
+                <th>Estado</th>
+              </tr>
+            </thead>
+            <tbody id="departures-tbody">
+              <tr>
+                <td colspan="5" style="text-align: center; padding: 30px; color: #ffffff;">
+                  <i style="font-size: 2rem; margin-bottom: 10px;">⛵</i>
+                  <p>Cargando salidas...</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="table-pagination">
+          <span class="pagination-info">Mostrando 1-5 de 10 registros</span>
+          <div class="pagination-controls">
+            <button class="pagination-btn active">1</button>
+            <button class="pagination-btn">2</button>
+            <button class="pagination-btn">...</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--  NAVIERAS Y OPERACIONES 🏢 -->
+  <div class="operations-section">
+    <div class="section-header">
+      <h2 class="section-title">🏢 CONTROL DE OPERACIONES</h2>
+      <div class="title-glow"></div>
+    </div>
+    
+    <div class="operations-grid">
+      <!-- Panel de Navieras -->
+      <div class="navieras-panel">
+        <h3 class="panel-title">🚢 Navieras Activas</h3>
+        <div class="navieras-list">
+          <div class="naviera-card baja-ferries">
+            <div class="naviera-logo">
+              <img src="imagenes/logo_bf.png" alt="Baja Ferries" class="logo-img">
+            </div>
+            <div class="naviera-info">
+              <h4>Baja Ferries</h4>
+              <div class="naviera-stats">
+                <span class="stat">✅ Operativa</span>
+                <span class="stat">🚢 2 Embarcaciones</span>
+                <span class="efficiency">⚡ 98% Eficiencia</span>
+              </div>
+            </div>
+            <div class="naviera-pulse"></div>
+          </div>
+          
+          <div class="naviera-card tmc">
+            <div class="naviera-logo">
+              <img src="imagenes/TMC.png" alt="TMC" class="logo-img">
+            </div>
+            <div class="naviera-info">
+              <h4>TMC (Transportation Maritime)</h4>
+              <div class="naviera-stats">
+                <span class="stat">✅ Operativa</span>
+                <span class="stat">🚢 1 Embarcación</span>
+                <span class="efficiency">⚡ 95% Eficiencia</span>
+              </div>
+            </div>
+            <div class="naviera-pulse"></div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Timeline de Operaciones -->
+      <div class="timeline-panel">
+        <h3 class="panel-title">📅 Timeline de Operaciones</h3>
+        <div class="timeline">
+          <div class="timeline-item active">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <div class="event-time">08:30</div>
+              <div class="event-title">🚢 Arribo La Paz - Mazatlán</div>
+              <div class="event-status">✅ Completado</div>
+            </div>
+          </div>
+          
+          <div class="timeline-item upcoming">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <div class="event-time">14:00</div>
+              <div class="event-title">⛵ Salida La Paz - Topolobampo</div>
+              <div class="event-status">⏳ Programado</div>
+            </div>
+          </div>
+          
+          <div class="timeline-item upcoming">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <div class="event-time">18:45</div>
+              <div class="event-title">🚢 Arribo Mazatlán - La Paz</div>
+              <div class="event-status">⏳ Estimado</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Elementos Decorativos Flotantes -->
+  <div class="floating-decorations">
+    <div class="float-element wave">🌊</div>
+    <div class="float-element ship">🚢</div>
+    <div class="float-element anchor">⚓</div>
+    <div class="float-element island">🏝️</div>
+    <div class="float-element sunset">🌅</div>
+  </div>
+</div>
+
+<style>
+/* ================================
+   🔥 ESTILOS ULTRA ESPECTACULARES 🔥
+   ================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: #008B8B;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.ultra-modern-dashboard {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 20px;
+  position: relative;
+}
+
+/* =============================
+   🌊 HERO SECTION ÉPICO 🌊
+   ============================= */
+.epic-hero-section {
+  position: relative;
+  min-height: 400px;
+  border-radius: 30px;
+  overflow: hidden;
+  margin-bottom: 40px;
+  background: #008B8B;
+  box-shadow: 
+    0 30px 60px rgba(0,0,0,0.4),
+    0 0 0 1px rgba(255,255,255,0.1),
+    inset 0 1px 0 rgba(255,255,255,0.2);
+}
+
+@keyframes megaGradientShift {
+  0% { background-position: 0% 50%; }
+  25% { background-position: 100% 50%; }
+  50% { background-position: 100% 100%; }
+  75% { background-position: 0% 100%; }
+  100% { background-position: 0% 50%; }
+}
+
+.advanced-animated-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.ocean-waves {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: linear-gradient(to right, 
+    rgba(255,255,255,0.1) 0%, 
+    rgba(255,255,255,0.2) 50%, 
+    rgba(255,255,255,0.1) 100%);
+  animation: waveMotion 8s ease-in-out infinite;
+}
+
+@keyframes waveMotion {
+  0%, 100% { transform: translateX(-50px) scaleY(1); }
+  50% { transform: translateX(50px) scaleY(1.2); }
+}
+
+.floating-bubbles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.floating-bubbles::before,
+.floating-bubbles::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  animation: bubbleFloat 15s linear infinite;
+}
+
+.floating-bubbles::before {
+  left: 20%;
+  animation-delay: -5s;
+}
+
+.floating-bubbles::after {
+  left: 80%;
+  animation-delay: -10s;
+}
+
+@keyframes bubbleFloat {
+  0% { transform: translateY(100vh) scale(0); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(-100px) scale(1); opacity: 0; }
+}
+
+.light-rays {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: conic-gradient(
+    from 0deg at 50% 50%,
+    transparent 0deg,
+    rgba(255,255,255,0.03) 90deg,
+    transparent 180deg,
+    rgba(255,255,255,0.03) 270deg,
+    transparent 360deg
+  );
+  animation: rayRotation 30s linear infinite;
+}
+
+@keyframes rayRotation {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.particle-system {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,0.4), transparent),
+    radial-gradient(2px 2px at 40% 70%, rgba(255,255,255,0.3), transparent),
+    radial-gradient(1px 1px at 90% 40%, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1px 1px at 80% 80%, rgba(255,255,255,0.4), transparent);
+  background-size: 300px 300px, 200px 200px, 150px 150px, 100px 100px;
+  animation: particleDrift 20s linear infinite;
+}
+
+@keyframes particleDrift {
+  0% { background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%; }
+  25% { background-position: 100% 25%, 25% 100%, 100% 75%, 75% 25%; }
+  50% { background-position: 50% 100%, 100% 50%, 25% 100%, 100% 50%; }
+  75% { background-position: 25% 75%, 75% 25%, 75% 25%, 25% 75%; }
+  100% { background-position: 0% 0%, 0% 0%, 0% 0%, 0% 0%; }
+}
+
+
+.hero-main-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 60px 50px;
+  gap: 60px;
+}
+
+.hero-left {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.mega-icon-container {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rotating-ring {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 3px solid rgba(255,255,255,0.2);
+  border-top: 3px solid rgba(255,255,255,0.8);
+  border-radius: 50%;
+  animation: megaSpin 8s linear infinite;
+}
+
+@keyframes megaSpin {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.1); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+.pulsing-core {
+  font-size: 48px;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(20px);
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: megaPulse 3s ease-in-out infinite;
+  box-shadow: 
+    0 0 30px rgba(255,255,255,0.3),
+    inset 0 0 20px rgba(255,255,255,0.1);
+}
+
+.api-logo {
+  width: 140px;
+  height: 140px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  animation: logoSpin 8s linear infinite;
+}
+
+@keyframes logoSpin {
+  0% { transform: rotate(0deg) scale(1); }
+  25% { transform: rotate(90deg) scale(1.1); }
+  50% { transform: rotate(180deg) scale(1); }
+  75% { transform: rotate(270deg) scale(1.1); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+@keyframes megaPulse {
+  0%, 100% { 
+    transform: scale(1);
+    box-shadow: 0 0 30px rgba(255,255,255,0.3);
+  }
+  50% { 
+    transform: scale(1.15);
+    box-shadow: 0 0 50px rgba(255,255,255,0.6);
+  }
+}
+
+.energy-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle, rgba(255,255,255,0.4) 1px, transparent 1px);
+  background-size: 20px 20px;
+  animation: energyFlow 6s linear infinite;
+}
+
+@keyframes energyFlow {
+  0% { background-position: 0 0; opacity: 0.5; }
+  50% { background-position: 10px 10px; opacity: 1; }
+  100% { background-position: 20px 20px; opacity: 0.5; }
+}
+
+.hero-text-section {
+  color: white;
+}
+
+.mega-title {
+  font-size: 4rem;
+  font-weight: 900;
+  margin: 0 0 20px 0;
+  text-shadow: 
+    2px 2px 4px rgba(0,0,0,0.5),
+    0 0 20px rgba(255,255,255,0.3);
+  line-height: 0.9;
+}
+
+.title-line-1,
+.title-line-2 {
+  display: block;
+  background: linear-gradient(45deg, #ffffff, #e2e8f0, #cbd5e1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: titleShimmer 4s ease-in-out infinite;
+}
+
+@keyframes titleShimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.epic-subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  opacity: 0.95;
+  font-weight: 500;
+}
+
+.location-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(20px);
+  padding: 12px 20px;
+  border-radius: 25px;
+  border: 1px solid rgba(255,255,255,0.2);
+  font-weight: 600;
+}
+
+.hero-right {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  color: white;
+  margin-top: -50px;
+}
+
+.status-panel {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 18px;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.system-status {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.status-light {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 
+    0 0 0 4px rgba(16,185,129,0.3),
+    0 0 20px rgba(16,185,129,0.6);
+  animation: statusPulse 2s infinite;
+}
+
+@keyframes statusPulse {
+  0%, 100% { 
+    box-shadow: 
+      0 0 0 4px rgba(16,185,129,0.3),
+      0 0 20px rgba(16,185,129,0.6);
+  }
+  50% { 
+    box-shadow: 
+      0 0 0 8px rgba(16,185,129,0.2),
+      0 0 30px rgba(16,185,129,0.8);
+  }
+}
+
+.live-clock {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 5px;
+  text-shadow: 0 0 20px rgba(255,255,255,0.5);
+  animation: clockGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes clockGlow {
+  0% { text-shadow: 0 0 20px rgba(255,255,255,0.5); }
+  100% { text-shadow: 0 0 30px rgba(255,255,255,0.8); }
+}
+
+.date-display {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  font-weight: 500;
+}
+
+.routes-display {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.route-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(20px);
+  padding: 20px;
+  border-radius: 15px;
+  border: 1px solid rgba(255,255,255,0.2);
+  transition: all 0.3s ease;
+}
+
+.route-item:hover {
+  background: rgba(255,255,255,0.2);
+  transform: translateX(10px);
+}
+
+.route-visual {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ship-icon {
+  font-size: 1.5rem;
+  animation: shipSway 4s ease-in-out infinite;
+}
+
+@keyframes shipSway {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(5deg); }
+  75% { transform: rotate(-5deg); }
+}
+
+.route-line {
+  width: 30px;
+  height: 2px;
+  background: linear-gradient(to right, transparent, rgba(255,255,255,0.6), transparent);
+  animation: routeFlow 2s ease-in-out infinite;
+}
+
+@keyframes routeFlow {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+.route-details {
+  flex: 1;
+}
+
+.route-name {
+  display: block;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 3px;
+}
+
+.route-distance {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.route-status-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 10px rgba(16,185,129,0.6);
+  animation: indicatorPulse 1.5s infinite;
+}
+
+@keyframes indicatorPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+}
+
+/* =============================
+   🔥 MÉTRICAS ESPECTACULARES 🔥
+   ============================= */
+.mega-metrics-section {
+  margin-bottom: 40px;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: white;
+  text-shadow: 
+    2px 2px 4px rgba(0,0,0,0.5),
+    0 0 20px rgba(255,255,255,0.3);
+  margin-bottom: 10px;
+}
+
+.title-glow {
+  width: 200px;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, #3b82f6, #06b6d4, #10b981, transparent);
+  margin: 0 auto;
+  border-radius: 2px;
+  animation: titleGlowPulse 3s ease-in-out infinite;
+}
+
+@keyframes titleGlowPulse {
+  0%, 100% { opacity: 0.6; transform: scaleX(1); }
+  50% { opacity: 1; transform: scaleX(1.2); }
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+.metric-card {
+  position: relative;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(20px);
+  border-radius: 25px;
+  padding: 30px;
+  border: 1px solid rgba(255,255,255,0.1);
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.metric-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  background: rgba(255,255,255,0.1);
+  box-shadow: 
+    0 25px 50px rgba(0,0,0,0.3),
+    0 0 50px rgba(59,130,246,0.3);
+}
+
+.card-bg-effect {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    rgba(255,255,255,0.05) 90deg,
+    transparent 180deg,
+    rgba(255,255,255,0.03) 270deg,
+    transparent 360deg
+  );
+  animation: cardEffectRotation 15s linear infinite;
+}
+
+@keyframes cardEffectRotation {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.metric-icon {
+  font-size: 2.5rem;
+  background: rgba(255,255,255,0.1);
+  padding: 15px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  animation: iconFloat 4s ease-in-out infinite;
+}
+
+@keyframes iconFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+.sparkle-effects {
+  font-size: 1.2rem;
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+.metric-content {
+  position: relative;
+  z-index: 2;
+  color: white;
+}
+
+.metric-number {
+  font-size: 3.5rem;
+  font-weight: 900;
+  margin-bottom: 10px;
+  text-shadow: 0 0 20px rgba(255,255,255,0.5);
+  background: linear-gradient(45deg, #ffffff, #e2e8f0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.metric-label {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  opacity: 0.9;
+}
+
+.metric-trend {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.metric-trend.positive {
+  color: #10b981;
+}
+
+.metric-trend.stable {
+  color: #06b6d4;
+}
+
+.trend-icon {
+  font-size: 1.1rem;
+}
+
+.card-pulse {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  border-radius: 0 0 25px 25px;
+  animation: cardPulseAnimation 3s ease-in-out infinite;
+}
+
+.arrivals-pulse {
+  background: linear-gradient(90deg, #3b82f6, #06b6d4);
+}
+
+.departures-pulse {
+  background: linear-gradient(90deg, #10b981, #34d399);
+}
+
+.routes-pulse {
+  background: linear-gradient(90deg, #f59e0b, #fbbf24);
+}
+
+.vessels-pulse {
+  background: linear-gradient(90deg, #8b5cf6, #a78bfa);
+}
+
+@keyframes cardPulseAnimation {
+  0%, 100% { opacity: 0.6; transform: scaleX(0.8); }
+  50% { opacity: 1; transform: scaleX(1); }
+}
+
+/* =============================
+   🏢 OPERACIONES SECTION 🏢
+   ============================= */
+.operations-section {
+  margin-bottom: 40px;
+}
+
+.operations-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.navieras-panel,
+.timeline-panel {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(20px);
+  border-radius: 25px;
+  padding: 30px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.panel-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 25px;
+  text-shadow: 0 0 10px rgba(255,255,255,0.3);
+}
+
+.navieras-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.naviera-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 20px;
+  padding: 25px;
+  border: 1px solid rgba(255,255,255,0.1);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.naviera-card:hover {
+  background: rgba(255,255,255,0.1);
+  transform: translateY(-5px);
+}
+
+.naviera-logo {
+  width: 60px;
+  height: 60px;
+  border-radius: 15px;
+  overflow: hidden;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+.naviera-info {
+  flex: 1;
+  color: white;
+}
+
+.naviera-info h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.naviera-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.stat {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.efficiency {
+  font-weight: 600;
+  color: #10b981;
+}
+
+.naviera-pulse {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(to bottom, #3b82f6, #06b6d4);
+  animation: navieraPulse 2s ease-in-out infinite;
+}
+
+@keyframes navieraPulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.timeline-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+}
+
+.timeline-marker {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #06b6d4;
+  box-shadow: 0 0 15px rgba(6,182,212,0.6);
+  position: relative;
+  z-index: 2;
+}
+
+.timeline-item.active .timeline-marker {
+  background: #10b981;
+  box-shadow: 0 0 15px rgba(16,185,129,0.6);
+  animation: activeMarker 2s infinite;
+}
+
+@keyframes activeMarker {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+.timeline-content {
+  flex: 1;
+  color: white;
+}
+
+.event-time {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #06b6d4;
+  margin-bottom: 5px;
+}
+
+.event-title {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 3px;
+}
+
+.event-status {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* =============================
+   ⚡ ACCIONES RÁPIDAS ⚡
+   ============================= */
+.quick-actions-section {
+  margin-bottom: 40px;
+}
+
+.actions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.action-btn {
+  position: relative;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 20px;
+  padding: 25px;
+  color: white;
+  font-family: inherit;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.action-btn:hover {
+  background: rgba(255,255,255,0.1);
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+.btn-bg-effect {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    rgba(255,255,255,0.03) 90deg,
+    transparent 180deg,
+    rgba(255,255,255,0.03) 270deg,
+    transparent 360deg
+  );
+  animation: btnEffectRotation 10s linear infinite;
+}
+
+@keyframes btnEffectRotation {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.btn-icon {
+  font-size: 2rem;
+  background: rgba(255,255,255,0.1);
+  padding: 15px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 2;
+}
+
+.btn-text {
+  flex: 1;
+  position: relative;
+  z-index: 2;
+}
+
+.btn-title {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.btn-subtitle {
+  display: block;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.btn-ripple {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  transform: translate(-50%, -50%);
+  transition: all 0.6s ease;
+}
+
+.action-btn:active .btn-ripple {
+  width: 300px;
+  height: 300px;
+}
+
+/* =============================
+   🎭 DECORACIONES FLOTANTES 🎭
+   ============================= */
+.floating-decorations {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.float-element {
+  position: absolute;
+  font-size: 2rem;
+  opacity: 0.1;
+  animation: floatAround 30s linear infinite;
+}
+
+.float-element.wave {
+  top: 20%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.float-element.ship {
+  top: 60%;
+  right: 15%;
+  animation-delay: -10s;
+}
+
+.float-element.anchor {
+  bottom: 30%;
+  left: 20%;
+  animation-delay: -20s;
+}
+
+.float-element.island {
+  top: 40%;
+  right: 30%;
+  animation-delay: -15s;
+}
+
+.float-element.sunset {
+  bottom: 20%;
+  right: 10%;
+  animation-delay: -5s;
+}
+
+@keyframes floatAround {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(30px, -30px) rotate(90deg); }
+  50% { transform: translate(-20px, -60px) rotate(180deg); }
+  75% { transform: translate(-40px, -20px) rotate(270deg); }
+  100% { transform: translate(0, 0) rotate(360deg); }
+}
+
+/* =============================
+   📱 RESPONSIVE DESIGN 📱
+   ============================= */
+@media (max-width: 1200px) {
+  .hero-main-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 40px;
+  }
+  
+  .operations-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .ultra-modern-dashboard {
+    padding: 15px;
+  }
+  
+  .mega-title {
+    font-size: 2.5rem;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .actions-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .hero-main-content {
+    padding: 40px 30px;
+  }
+}
+
+/* =============================
+   ✨ EFECTOS ADICIONALES ✨
+   ============================= */
+.ultra-modern-dashboard::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(59,130,246,0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(16,185,129,0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(245,158,11,0.05) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Efectos de brillo al hacer hover */
+.metric-card:hover,
+.action-btn:hover,
+.naviera-card:hover {
+  box-shadow: 
+    0 0 30px rgba(59,130,246,0.2),
+    0 0 60px rgba(16,185,129,0.1),
+    0 20px 40px rgba(0,0,0,0.3);
+}
+
+/* Animaciones de entrada */
+.ultra-modern-dashboard > * {
+  animation: slideInUp 0.8s ease-out;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Delays escalonados para animaciones */
+.epic-hero-section { animation-delay: 0.1s; }
+.mega-metrics-section { animation-delay: 0.2s; }
+.operations-section { animation-delay: 0.3s; }
+.quick-actions-section { animation-delay: 0.4s; }
+
+/* =============================
+   🌊 SECCIÓN DE DATOS ÉPICOS 🌊
+   ============================= */
+.epic-data-section {
+  margin-bottom: 40px;
+}
+
+.data-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.data-panel {
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(25px);
+  border-radius: 25px;
+  border: 1px solid rgba(255,255,255,0.1);
+  overflow: hidden;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.data-panel:hover {
+  background: rgba(255,255,255,0.08);
+  transform: translateY(-8px);
+  box-shadow: 
+    0 25px 50px rgba(0,0,0,0.3),
+    0 0 50px rgba(59,130,246,0.2);
+}
+
+.data-panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #3b82f6, #06b6d4);
+  animation: dataGlow 3s ease-in-out infinite;
+}
+
+@keyframes dataGlow {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+.arrivals-panel::before {
+  background: linear-gradient(90deg, #3b82f6, #1e40af);
+}
+
+.departures-panel::before {
+  background: linear-gradient(90deg, #10b981, #059669);
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 25px 30px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.panel-icon {
+  font-size: 1.8rem;
+  margin-right: 15px;
+}
+
+.panel-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: white;
+  margin: 0;
+  text-shadow: 0 0 10px rgba(255,255,255,0.3);
+  flex: 1;
+}
+
+.records-count {
+  background: rgba(255,255,255,0.1);
+  padding: 8px 15px;
+  border-radius: 15px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.8);
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* =============================
+   🔥 TABLAS ÉPICAS MEJORADAS 🔥
+   ============================= */
+.epic-table-container {
+  overflow-x: auto;
+  border-radius: 15px;
+}
+
+.epic-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: rgba(255,255,255,0.02);
+}
+
+.epic-table thead th {
+  background: rgba(255,255,255,0.1);
+  color: white;
+  padding: 15px 20px;
+  text-align: left;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid rgba(255,255,255,0.2);
+}
+
+.epic-table tbody tr {
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  transition: all 0.3s ease;
+}
+
+.epic-table tbody tr:hover {
+  background: rgba(255,255,255,0.05);
+  transform: scale(1.01);
+}
+
+.epic-table tbody td {
+  padding: 18px 20px;
+  color: rgba(255,255,255,0.9);
+  font-size: 0.95rem;
+  vertical-align: middle;
+}
+
+.naviera-cell {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  padding: 15px !important;
+}
+
+.naviera-logo {
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 10px;
+  object-fit: contain;
+  background: white;
+  padding: 6px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.vessel-cell {
+  font-weight: 700 !important;
+  color: #4FC3F7 !important;
+  font-size: 1.1rem !important;
+}
+
+.time-cell {
+  font-family: 'Courier New', monospace !important;
+  font-weight: 700 !important;
+  color: #66BB6A !important;
+  font-size: 1rem !important;
+  text-align: center;
+}
+
+.status-badge {
+  padding: 8px 16px !important;
+  border-radius: 20px !important;
+  font-size: 0.8rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px;
+}
+
+.status-completed, .status-confirmado, .status-listo {
+  background: rgba(76,175,80,0.2) !important;
+  color: #4CAF50 !important;
+  border: 1px solid rgba(76,175,80,0.4);
+}
+
+.status-enroute, .status-transito {
+  background: rgba(33,150,243,0.2) !important;
+  color: #2196F3 !important;
+  border: 1px solid rgba(33,150,243,0.4);
+}
+
+.status-scheduled, .status-programado {
+  background: rgba(255,193,7,0.2) !important;
+  color: #FFC107 !important;
+  border: 1px solid rgba(255,193,7,0.4);
+}
+
+.status-atracado {
+  background: rgba(156,39,176,0.2) !important;
+  color: #9C27B0 !important;
+  border: 1px solid rgba(156,39,176,0.4);
+}
+
+.status-embarcando {
+  background: rgba(255,87,34,0.2) !important;
+  color: #FF5722 !important;
+  border: 1px solid rgba(255,87,34,0.4);
+}
+
+/* ...existing code... */
+</style>
+<script>
+async function checkServerHealth() {
+    try {
+        console.log('🔍 Verificando estado del servidor...');
+        
+        // Intentar hacer una petición simple a la raíz del servidor
+        const response = await fetch('/', { 
+            method: 'HEAD',
+            cache: 'no-cache'
+        });
+        
+        console.log('📡 Respuesta del servidor:', response.status, response.statusText);
+        
+        if (response.ok) {
+            console.log('✅ Servidor disponible y respondiendo');
+            return true;
+        } else {
+            console.warn('⚠️ Servidor responde pero con error:', response.status);
+            return false;
+        }
+        
+    } catch (error) {
+        console.error('❌ Servidor no disponible:', error.message);
+        
+        // Mostrar mensaje de error en ambas tablas
+        const errorHTML = `
+            <tr class="error-row">
+                <td colspan="5">
+                    <div class="error-state">
+                        <div class="error-icon">🔌</div>
+                        <span>Servidor no disponible</span>
+                        <small style="display: block; margin-top: 5px; color: #ff6b6b;">
+                            Verifique que el servidor esté iniciado en el puerto 3000
+                        </small>
+                    </div>
+                </td>
+            </tr>
+        `;
+        
+        const arrivalsTable = document.getElementById('arrivals-tbody');
+        const departuresTable = document.getElementById('departures-tbody');
+        
+        if (arrivalsTable) arrivalsTable.innerHTML = errorHTML;
+        if (departuresTable) departuresTable.innerHTML = errorHTML;
+        
+        return false;
+    }
+}
+
+// FUNCIONES DE DATOS EN TIEMPO REAL 
+
+// 🚢 Cargar datos de arribos
+async function loadArrivalsData() {
+    try {
+        console.log('🚢 Cargando datos de arribos...');
+        console.log('🌐 URL actual:', window.location.href);
+        console.log('🔗 Realizando fetch a: /getBarcosEntradas');
+        
+        const response = await fetch('http://localhost:3000/getBarcosEntradas');
+        console.log('📡 Respuesta recibida:', response.status, response.statusText);
+        console.log('📋 Headers de respuesta:', Object.fromEntries(response.headers.entries()));
+        
+        // Verificar si la respuesta es válida
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        }
+        
+        // Obtener el texto de la respuesta primero para debugging
+        const responseText = await response.text();
+        console.log('📄 Texto de respuesta (primeros 200 chars):', responseText.substring(0, 200));
+        
+        // Intentar parsear como JSON
+        let data;
+        try {
+            data = JSON.parse(responseText);
+        } catch (parseError) {
+            console.error('❌ Error parseando JSON:', parseError);
+            console.error('📄 Respuesta completa:', responseText);
+            throw new Error(`Respuesta no es JSON válido. Recibido: ${responseText.substring(0, 100)}...`);
+        }
+        
+        console.log('📊 Datos de arribos recibidos:', data);
+        
+        const tbody = document.getElementById('arrivals-tbody');
+        const recordsCount = document.getElementById('arrivals-records');
+        
+        if (!tbody) {
+            console.error('❌ No se encontró el elemento arrivals-tbody');
+            return;
+        }
+        
+        if (data && data.length > 0) {
+            console.log('🔄 Procesando', data.length, 'arribos...');
+            tbody.innerHTML = data.map((arribo, index) => `
+                <tr class="data-row" style="animation-delay: ${index * 0.1}s">
+                    <td class="naviera-cell">
+                        <img src="imagenes/${arribo.naviera === 'BajaFerries' ? 'logo_bf.png' : 'TMC.png'}" 
+                             alt="${arribo.naviera}" class="naviera-logo">
+                    </td>
+                    <td class="vessel-cell">${arribo.buque}</td>
+                    <td class="origin-cell">${arribo.destino}</td>
+                    <td class="time-cell">${arribo.hora}</td>
+                    <td class="status-cell">
+                        <span class="status-badge ${getStatusClass(arribo.estatus)}">
+                            ${arribo.estatus}
+                        </span>
+                    </td>
+                </tr>
+            `).join('');
+            
+            console.log('✅ HTML generado para arribos. Insertando en DOM...');
+            
+            if (recordsCount) {
+                recordsCount.textContent = `${data.length} registros`;
+                console.log('✅ Contador de registros actualizado:', data.length);
+            }
+            animateCounter('arrivals-count', data.length);
+            console.log('✅ Arribos cargados completamente');
+            
+        } else {
+            tbody.innerHTML = `
+                <tr class="empty-row">
+                    <td colspan="5">
+                        <div class="empty-state">
+                            <div class="empty-icon">🌊</div>
+                            <span>No hay arribos programados para hoy</span>
+                        </div>
+                    </td>
+                </tr>
+            `;
+            recordsCount.textContent = '0 registros';
+        }
+        
+    } catch (error) {
+        console.error('❌ Error cargando arribos:', error);
+        console.error('❌ Stack trace:', error.stack);
+        
+        const errorMessage = error.message || 'Error desconocido';
+        
+        document.getElementById('arrivals-tbody').innerHTML = `
+            <tr class="error-row">
+                <td colspan="5">
+                    <div class="error-state">
+                        <div class="error-icon">⚠️</div>
+                        <span>Error al cargar datos de arribos</span>
+                        <small style="display: block; margin-top: 5px; color: #ff6b6b;">
+                            ${errorMessage}
+                        </small>
+                    </div>
+                </td>
+            </tr>
+        `;
+    }
+}
+
+// ⛵ Cargar datos de salidas
+async function loadDeparturesData() {
+    try {
+        console.log('⛵ Cargando datos de salidas...');
+        console.log('🌐 URL actual:', window.location.href);
+        console.log('🔗 Realizando fetch a: /getBarcosSalidas');
+        
+        const response = await fetch('http://localhost:3000/getBarcosSalidas');
+        console.log('📡 Respuesta recibida:', response.status, response.statusText);
+        console.log('📋 Headers de respuesta:', Object.fromEntries(response.headers.entries()));
+        
+        // Verificar si la respuesta es válida
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        }
+        
+        // Obtener el texto de la respuesta primero para debugging
+        const responseText = await response.text();
+        console.log('📄 Texto de respuesta (primeros 200 chars):', responseText.substring(0, 200));
+        
+        // Intentar parsear como JSON
+        let data;
+        try {
+            data = JSON.parse(responseText);
+        } catch (parseError) {
+            console.error('❌ Error parseando JSON:', parseError);
+            console.error('📄 Respuesta completa:', responseText);
+            throw new Error(`Respuesta no es JSON válido. Recibido: ${responseText.substring(0, 100)}...`);
+        }
+        
+        console.log('📊 Datos de salidas recibidos:', data);
+        
+        const tbody = document.getElementById('departures-tbody');
+        const recordsCount = document.getElementById('departures-records');
+        
+        if (!tbody) {
+            console.error('❌ No se encontró el elemento departures-tbody');
+            return;
+        }
+        
+        if (data && data.length > 0) {
+            console.log('🔄 Procesando', data.length, 'salidas...');
+            tbody.innerHTML = data.map((salida, index) => `
+                <tr class="data-row" style="animation-delay: ${index * 0.1}s">
+                    <td class="naviera-cell">
+                        <img src="imagenes/${salida.naviera === 'BajaFerries' ? 'logo_bf.png' : 'TMC.png'}" 
+                             alt="${salida.naviera}" class="naviera-logo">
+                    </td>
+                    <td class="vessel-cell">${salida.buque}</td>
+                    <td class="destination-cell">${salida.destino}</td>
+                    <td class="time-cell">${salida.hora}</td>
+                    <td class="status-cell">
+                        <span class="status-badge ${getStatusClass(salida.estatus)}">
+                            ${salida.estatus}
+                        </span>
+                    </td>
+                </tr>
+            `).join('');
+            
+            console.log('✅ HTML generado para salidas. Insertando en DOM...');
+            
+            if (recordsCount) {
+                recordsCount.textContent = `${data.length} registros`;
+                console.log('✅ Contador de registros actualizado:', data.length);
+            }
+            animateCounter('departures-count', data.length);
+            console.log('✅ Salidas cargadas completamente');
+            
+        } else {
+            tbody.innerHTML = `
+                <tr class="empty-row">
+                    <td colspan="5">
+                        <div class="empty-state">
+                            <div class="empty-icon">⛵</div>
+                            <span>No hay salidas programadas para hoy</span>
+                        </div>
+                    </td>
+                </tr>
+            `;
+            recordsCount.textContent = '0 registros';
+        }
+        
+    } catch (error) {
+        console.error('❌ Error cargando salidas:', error);
+        console.error('❌ Stack trace:', error.stack);
+        
+        const errorMessage = error.message || 'Error desconocido';
+        
+        document.getElementById('departures-tbody').innerHTML = `
+            <tr class="error-row">
+                <td colspan="5">
+                    <div class="error-state">
+                        <div class="error-icon">⚠️</div>
+                        <span>Error al cargar datos de salidas</span>
+                        <small style="display: block; margin-top: 5px; color: #ff6b6b;">
+                            ${errorMessage}
+                        </small>
+                    </div>
+                </td>
+            </tr>
+        `;
+    }
+}
+
+// 🔄 Función para refrescar todas las tablas
+function refreshAllTables() {
+    console.log('🔄 Refrescando tablas...');
+    loadArrivalsData();
+    loadDeparturesData();
+    updateStatsNow();
+}
+
+// 📅 FUNCIÓN LEGACY - Mantener por compatibilidad
+function refreshData() {
+    console.log('📅 Refrescando datos (legacy)...');
+    loadHorariosData();
+}
+
+// 🎯 Función auxiliar para animar contadores de estadísticas
+function animateStatCounter(elementId, targetValue, suffix = '') {
+    const element = document.getElementById(elementId);
+    const startValue = 0;
+    const duration = 1500;
+    const increment = targetValue / (duration / 16);
+    let current = startValue;
+    
+    const timer = setInterval(() => {
+        current += increment;
+        if (current >= targetValue) {
+            current = targetValue;
+            clearInterval(timer);
+        }
+        element.textContent = Math.floor(current) + suffix;
+    }, 16);
+}
+
+// 🎨 Función auxiliar para obtener clase de estado
+function getStatusClass(status) {
+    if (!status) return 'status-unknown';
+    
+    const statusLower = status.toLowerCase();
+    if (statusLower.includes('confirmado') || statusLower.includes('listo')) {
+        return 'status-confirmado';
+    } else if (statusLower.includes('atracado')) {
+        return 'status-atracado';
+    } else if (statusLower.includes('en tránsito') || statusLower.includes('tránsito')) {
+        return 'status-transito';
+    } else if (statusLower.includes('embarcando')) {
+        return 'status-embarcando';
+    } else if (statusLower.includes('programado')) {
+        return 'status-programado';
+    } else {
+        return 'status-unknown';
+    }
+}
+
+// 🔄 Función para refrescar todos los datos
+function refreshAllData() {
+    console.log('🔄 Refrescando todos los datos...');
+    
+    // Mostrar indicador de carga
+    document.getElementById('horarios-tbody').innerHTML = `
+        <tr class="loading-row">
+            <td colspan="7">
+                <div class="loading-animation">
+                    <div class="wave-loader"></div>
+                    <span>Actualizando horarios...</span>
+                </div>
+            </td>
+        </tr>
+    `;
+    
+    // Cargar datos actualizados
+    setTimeout(() => {
+        loadArrivalsData();
+        loadDeparturesData();
+        updateStatsNow(); // También actualizar métricas principales
+    }, 500);
+    
+    // Animar el botón de refresh
+    const refreshBtn = document.querySelector('.refresh-btn .refresh-icon');
+    if (refreshBtn) {
+        refreshBtn.style.animation = 'spin 1s linear';
+        setTimeout(() => {
+            refreshBtn.style.animation = '';
+        }, 1000);
+    }
+}
+
+// 🔧 DEBUG TEMPORAL - FORZAR CARGA INMEDIATA
+console.log('🔧 INICIANDO DEBUG...');
+
+// Función super simple y directa para cargar datos
+function cargarDatosSimple() {
+    console.log('� Cargando datos de forma simple...');
+    
+    // FUNCIONES ELIMINADAS - USAMOS LAS NUEVAS loadArrivalsData() y loadDeparturesData()
+    console.log('🗑️ Funciones legacy eliminadas para evitar conflictos');
+}
+
+// Ejecutar múltiples veces para asegurar que funcione
+setTimeout(cargarDatosSimple, 100);
+setTimeout(cargarDatosSimple, 500);
+setTimeout(cargarDatosSimple, 1000);
+setTimeout(cargarDatosSimple, 2000);
+
+// Hacer función global
+window.cargarDatosSimple = cargarDatosSimple;
+
+// Agregar botón de test en el body
+document.addEventListener('DOMContentLoaded', function() {
+    // Crear botón de debug
+    const debugBtn = document.createElement('button');
+    debugBtn.innerText = '🔧 DEBUG: Recargar Datos';
+    debugBtn.style.position = 'fixed';
+    debugBtn.style.top = '10px';
+    debugBtn.style.right = '10px';
+    debugBtn.style.zIndex = '9999';
+    debugBtn.style.background = '#ff6b6b';
+    debugBtn.style.color = 'white';
+    debugBtn.style.border = 'none';
+    debugBtn.style.padding = '10px';
+    debugBtn.style.borderRadius = '5px';
+    debugBtn.onclick = function() {
+        console.log('🔧 DEBUG: Recargando datos manualmente...');
+        cargarDatosSimple();
+    };
+    document.body.appendChild(debugBtn);
+});
+
+// ========== SCRIPT FINAL PARA CARGAR DATOS ==========
+// ========== SISTEMA SIMPLE Y DIRECTO DE CARGA DE DATOS ==========
+
+console.log('� Iniciando Dashboard Terminal Dos...');
+
+// Función simple para cargar arribos
+async function cargarArribos() {
+    try {
+        console.log('📥 Solicitando arribos...');
+        const response = await fetch('/getBarcosEntradas');
+        console.log('📡 Respuesta arribos:', response.status);
+        
+        const datos = await response.json();
+        console.log('📊 Datos arribos recibidos:', datos);
+        
+        const tabla = document.getElementById('arrivals-tbody');
+        if (tabla && datos && datos.length > 0) {
+            tabla.innerHTML = datos.map(item => `
+                <tr>
+                    <td>
+                        <img src="imagenes/${item.naviera === 'BajaFerries' ? 'logo_bf.png' : 'TMC.png'}" 
+                             style="width:20px;height:20px;margin-right:5px;vertical-align:middle;" 
+                             onerror="this.style.display='none'">
+                        ${item.naviera}
+                    </td>
+                    <td>${item.buque}</td>
+                    <td>${item.destino}</td>
+                    <td>${item.hora}</td>
+                    <td><span style="background:#10b981;color:white;padding:2px 8px;border-radius:10px;font-size:0.8em;">${item.estatus}</span></td>
+                </tr>
+            `).join('');
+            console.log(`✅ ${datos.length} arribos mostrados en tabla`);
+        } else {
+            tabla.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:20px;color:#fff;">No hay arribos</td></tr>';
+        }
+    } catch (error) {
+        console.error('❌ Error en arribos:', error);
+        const tabla = document.getElementById('arrivals-tbody');
+        if (tabla) {
+            tabla.innerHTML = `<tr><td colspan="5" style="text-align:center;padding:20px;color:#ff6b6b;">Error: ${error.message}</td></tr>`;
+        }
+    }
+}
+
+// Función simple para cargar salidas
+async function cargarSalidas() {
+    try {
+        console.log('📤 Solicitando salidas...');
+        const response = await fetch('/getBarcosSalidas');
+        console.log('📡 Respuesta salidas:', response.status);
+        
+        const datos = await response.json();
+        console.log('📊 Datos salidas recibidos:', datos);
+        
+        const tabla = document.getElementById('departures-tbody');
+        if (tabla && datos && datos.length > 0) {
+            tabla.innerHTML = datos.map(item => `
+                <tr>
+                    <td>
+                        <img src="imagenes/${item.naviera === 'BajaFerries' ? 'logo_bf.png' : 'TMC.png'}" 
+                             style="width:20px;height:20px;margin-right:5px;vertical-align:middle;" 
+                             onerror="this.style.display='none'">
+                        ${item.naviera}
+                    </td>
+                    <td>${item.buque}</td>
+                    <td>${item.destino}</td>
+                    <td>${item.hora}</td>
+                    <td><span style="background:#10b981;color:white;padding:2px 8px;border-radius:10px;font-size:0.8em;">${item.estatus}</span></td>
+                </tr>
+            `).join('');
+            console.log(`✅ ${datos.length} salidas mostradas en tabla`);
+        } else {
+            tabla.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:20px;color:#fff;">No hay salidas</td></tr>';
+        }
+    } catch (error) {
+        console.error('❌ Error en salidas:', error);
+        const tabla = document.getElementById('departures-tbody');
+        if (tabla) {
+            tabla.innerHTML = `<tr><td colspan="5" style="text-align:center;padding:20px;color:#ff6b6b;">Error: ${error.message}</td></tr>`;
+        }
+    }
+}
+
+// 🚢 Cargar datos de arribos
+async function loadArrivalsData() {
+    try {
+        console.log('🚢 Cargando datos de arribos...');
+        const response = await fetch('http://localhost:3000/getBarcosEntradas');
+        
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        }
+        
+        const data = await response.json();
+        console.log('📊 Datos de arribos recibidos:', data);
+        
+        const tbody = document.getElementById('arrivals-tbody');
+        const recordsCount = document.getElementById('arrivals-records');
+        
+        if (!tbody) {
+            console.error('❌ No se encontró el elemento arrivals-tbody');
+            return;
+        }
+        
+        if (data && data.length > 0) {
+            tbody.innerHTML = data.map((arribo, index) => `
+                <tr class="data-row" style="animation-delay: ${index * 0.1}s">
+                    <td class="naviera-cell">
+                        <img src="imagenes/${arribo.naviera === 'BajaFerries' ? 'logo_bf.png' : 'TMC.png'}" 
+                             alt="${arribo.naviera}" class="naviera-logo">
+                    </td>
+                    <td class="vessel-cell">${arribo.buque}</td>
+                    <td class="origin-cell">${arribo.destino}</td>
+                    <td class="time-cell">${arribo.hora}</td>
+                    <td class="status-cell">
+                        <span class="status-badge ${getStatusClass(arribo.estatus)}">
+                            ${arribo.estatus}
+                        </span>
+                    </td>
+                </tr>
+            `).join('');
+            
+            if (recordsCount) {
+                recordsCount.textContent = `${data.length} registros`;
+            }
+            console.log('✅ Arribos cargados completamente');
+        } else {
+            tbody.innerHTML = `
+                <tr class="empty-row">
+                    <td colspan="5">
+                        <div class="empty-state">
+                            <div class="empty-icon">🌊</div>
+                            <span>No hay arribos programados para hoy</span>
+                        </div>
+                    </td>
+                </tr>
+            `;
+        }
+    } catch (error) {
+        console.error('❌ Error cargando arribos:', error);
+        document.getElementById('arrivals-tbody').innerHTML = `
+            <tr class="error-row">
+                <td colspan="5">
+                    <div class="error-state">
+                        <div class="error-icon">⚠️</div>
+                        <span>Error al cargar datos de arribos</span>
+                    </div>
+                </td>
+            </tr>
+        `;
+    }
+}
+
+// ⛵ Cargar datos de salidas
+async function loadDeparturesData() {
+    try {
+        console.log('⛵ Cargando datos de salidas...');
+        const response = await fetch('http://localhost:3000/getBarcosSalidas');
+        
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        }
+        
+        const data = await response.json();
+        console.log('📊 Datos de salidas recibidos:', data);
+        
+        const tbody = document.getElementById('departures-tbody');
+        const recordsCount = document.getElementById('departures-records');
+        
+        if (!tbody) {
+            console.error('❌ No se encontró el elemento departures-tbody');
+            return;
+        }
+        
+        if (data && data.length > 0) {
+            tbody.innerHTML = data.map((salida, index) => `
+                <tr class="data-row" style="animation-delay: ${index * 0.1}s">
+                    <td class="naviera-cell">
+                        <img src="imagenes/${salida.naviera === 'BajaFerries' ? 'logo_bf.png' : 'TMC.png'}" 
+                             alt="${salida.naviera}" class="naviera-logo">
+                    </td>
+                    <td class="vessel-cell">${salida.buque}</td>
+                    <td class="destination-cell">${salida.destino}</td>
+                    <td class="time-cell">${salida.hora}</td>
+                    <td class="status-cell">
+                        <span class="status-badge ${getStatusClass(salida.estatus)}">
+                            ${salida.estatus}
+                        </span>
+                    </td>
+                </tr>
+            `).join('');
+            
+            if (recordsCount) {
+                recordsCount.textContent = `${data.length} registros`;
+            }
+            console.log('✅ Salidas cargadas completamente');
+        } else {
+            tbody.innerHTML = `
+                <tr class="empty-row">
+                    <td colspan="5">
+                        <div class="empty-state">
+                            <div class="empty-icon">⛵</div>
+                            <span>No hay salidas programadas para hoy</span>
+                        </div>
+                    </td>
+                </tr>
+            `;
+        }
+    } catch (error) {
+        console.error('❌ Error cargando salidas:', error);
+        document.getElementById('departures-tbody').innerHTML = `
+            <tr class="error-row">
+                <td colspan="5">
+                    <div class="error-state">
+                        <div class="error-icon">⚠️</div>
+                        <span>Error al cargar datos de salidas</span>
+                    </div>
+                </td>
+            </tr>
+        `;
+    }
+}
+
+// Función principal para cargar todos los datos
+async function cargarTodosDatos() {
+    console.log('🔄 Cargando todos los datos...');
+    await loadArrivalsData();
+    await loadDeparturesData();
+    console.log('✅ Carga completa');
+}
+
+// Función para actualizar reloj
+function actualizarReloj() {
+    const ahora = new Date();
+    const reloj = document.getElementById('mega-clock');
+    const fecha = document.getElementById('mega-date');
+    
+    if (reloj) {
+        reloj.textContent = ahora.toLocaleTimeString('es-MX');
+    }
+    if (fecha) {
+        fecha.textContent = ahora.toLocaleDateString('es-MX', {
+            weekday: 'long',
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric'
+        });
+    }
+}
+
+// Inicializar cuando el DOM esté listo
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('🌐 DOM cargado, iniciando dashboard...');
+    
+    // Actualizar reloj
+    actualizarReloj();
+    setInterval(actualizarReloj, 1000);
+    
+    // Cargar datos inmediatamente
+    console.log('⏰ Iniciando carga inicial de datos...');
+    cargarTodosDatos();
+    
+    // Actualizar datos cada 60 segundos (reducimos frecuencia)
+    setInterval(() => {
+        console.log('🔄 Actualización automática...');
+        cargarTodosDatos();
+    }, 60000);
+});
+
+// Función global para recarga manual
+window.recargarDatos = function() {
+    console.log('🔄 Recarga manual solicitada');
+    cargarTodosDatos();
+};
+
+console.log('✅ Script de dashboard cargado');
+</script>
+
+</body>
+</html>

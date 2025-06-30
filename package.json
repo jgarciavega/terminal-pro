@@ -1,19 +1,31 @@
 {
   "name": "terminaldos",
-  "version": "1.0.0",
-  "description": "programa para terminal api",
-  "main": "index.js",
   "type": "module",
+  "version": "1.0.0",
+  "description": "Programa de escritorio para monitoreo portuario (Electron + Express)",
+  "main": "main.js",
   "scripts": {
-    "dev": "nodemon src/mysql.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "node api/server.js",
+    "dev-old": "nodemon src/mysql.js",
+    "api": "node api/server.js",
+    "start": "electron .",
+    "app": "node start-app.js",
+    "app-safe": "node start-app-improved.js",
+    "app-simple": "node start-simple.js",
+    "build": "electron-builder",
+    "build-win": "electron-builder --win",
+    "dist": "npm run build-win"
   },
   "keywords": [
+    "electron",
     "api",
     "node",
-    "nodejs"
+    "mysql",
+    "puerto",
+    "express",
+    "desktop-app"
   ],
-  "author": "jorge ignacio, jazziel briones",
+  "author": "Jorge Ignacio",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.5.0",
@@ -21,6 +33,27 @@
     "mysql2": "^3.14.1"
   },
   "devDependencies": {
+    "concurrently": "^9.2.0",
+    "electron": "^37.1.0",
+    "electron-builder": "^26.0.12",
     "nodemon": "^3.1.4"
+  },
+  "build": {
+    "appId": "com.jorge.terminaldos",
+    "productName": "Terminal Dos",
+    "directories": {
+      "buildResources": "assets"
+    },
+    "files": [
+      "**/*",
+      "!node_modules/**/*",
+      "node_modules/**/*"
+    ],
+    "win": {
+      "target": "portable",
+      "artifactName": "${productName}-${version}.${ext}",
+      "signAndEditExecutable": false
+    },
+    "publish": null
   }
 }
