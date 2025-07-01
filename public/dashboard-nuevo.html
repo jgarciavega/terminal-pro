@@ -90,7 +90,8 @@
       <div class="title-glow"></div>
     </div>
     
-    <div class="metrics-grid">
+    <div class="carousel-container">
+      <div class="metrics-grid">
       <!-- Métrica de Arribos -->
       <div class="metric-card arrivals">
         <div class="card-bg-effect"></div>
@@ -161,6 +162,15 @@
           </div>
         </div>
         <div class="card-pulse vessels-pulse"></div>
+      </div>
+      </div>
+      
+      <!-- Indicadores -->
+      <div class="carousel-dots">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
       </div>
     </div>
   </div>
@@ -835,14 +845,24 @@ body {
   50% { opacity: 1; transform: scaleX(1.2); }
 }
 
-.metrics-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 25px;
+/* Contenedor del carrusel */
+.carousel-container {
+  position: relative;
+  overflow: hidden;
   margin-bottom: 40px;
 }
 
+.metrics-grid {
+  display: flex;
+  transition: transform 0.8s ease;
+  gap: 25px;
+  padding: 0 50%;
+  transform: translateX(-50%);
+}
+
 .metric-card {
+  width: 350px;
+  flex-shrink: 0;
   position: relative;
   background: rgba(255,255,255,0.05);
   backdrop-filter: blur(20px);
@@ -852,6 +872,28 @@ body {
   overflow: hidden;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
+}
+
+/* Indicadores del carrusel */
+.carousel-dots {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.dot {
+  height: 12px;
+  width: 12px;
+  margin: 0 5px;
+  background-color: rgba(255,255,255,0.3);
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot.active {
+  background-color: #3b82f6;
+  box-shadow: 0 0 10px rgba(59,130,246,0.5);
 }
 
 .metric-card:hover {
@@ -993,6 +1035,22 @@ body {
 }
 
 /* =============================
+   🌊 TABLAS ÉPICAS HORIZONTALES 🌊
+   ============================= */
+
+.epic-tables-section {
+  margin-bottom: 40px;
+}
+
+.tables-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+/* =============================
    🏢 OPERACIONES SECTION 🏢
    ============================= */
 .operations-section {
@@ -1047,14 +1105,9 @@ body {
 }
 
 .naviera-logo {
-  width: 60px;
-  height: 60px;
-  border-radius: 15px;
-  overflow: hidden;
-  background: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  height: 25px;
+  width: auto;
+  object-fit: contain;
 }
 
 .logo-img {
@@ -1472,151 +1525,270 @@ body {
 }
 
 .panel-header {
+  padding: 20px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.08) 100%);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 25px 30px;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+  gap: 15px;
 }
 
 .panel-icon {
-  font-size: 1.8rem;
-  margin-right: 15px;
+  font-size: 1.5rem;
 }
 
 .panel-title {
-  font-size: 1.3rem;
-  font-weight: 700;
   color: white;
-  margin: 0;
-  text-shadow: 0 0 10px rgba(255,255,255,0.3);
-  flex: 1;
+  font-size: 1.2rem;
+  font-weight: 700;
+  flex-grow: 1;
 }
 
 .records-count {
-  background: rgba(255,255,255,0.1);
-  padding: 8px 15px;
-  border-radius: 15px;
-  font-size: 0.85rem;
-  font-weight: 600;
   color: rgba(255,255,255,0.8);
-  border: 1px solid rgba(255,255,255,0.2);
+  font-size: 0.9rem;
+  background: rgba(255,255,255,0.1);
+  padding: 5px 10px;
+  border-radius: 10px;
 }
 
-/* =============================
-   🔥 TABLAS ÉPICAS MEJORADAS 🔥
-   ============================= */
 .epic-table-container {
+  padding: 20px;
   overflow-x: auto;
-  border-radius: 15px;
+  max-width: 100%;
 }
 
 .epic-table {
   width: 100%;
   border-collapse: collapse;
+  font-size: 0.9rem;
+  min-width: 500px;
+}
+
+.epic-table th {
+  background: linear-gradient(135deg, rgba(59,130,246,0.2) 0%, rgba(16,185,129,0.2) 100%);
+  color: white;
+  font-weight: 600;
+  padding: 12px 10px;
+  text-align: left;
+  border-bottom: 2px solid rgba(255,255,255,0.2);
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+.epic-table td {
+  padding: 10px;
+  color: rgba(255,255,255,0.9);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  vertical-align: middle;
+  font-size: 0.8rem;
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.epic-table tr:hover {
+  background: rgba(255,255,255,0.05);
+}
+
+.epic-table tr:nth-child(even) {
   background: rgba(255,255,255,0.02);
 }
 
-.epic-table thead th {
-  background: rgba(255,255,255,0.1);
-  color: white;
-  padding: 15px 20px;
-  text-align: left;
-  font-weight: 700;
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  border-bottom: 2px solid rgba(255,255,255,0.2);
-}
-
-.epic-table tbody tr {
-  border-bottom: 1px solid rgba(255,255,255,0.05);
+.table-panel {
+  background: linear-gradient(145deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.2);
+  overflow: hidden;
   transition: all 0.3s ease;
+  min-height: 400px;
+  max-width: 100%;
 }
 
-.epic-table tbody tr:hover {
+.table-panel:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255,255,255,0.3);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+.table-pagination {
+  padding: 15px 20px;
   background: rgba(255,255,255,0.05);
-  transform: scale(1.01);
-}
-
-.epic-table tbody td {
-  padding: 18px 20px;
-  color: rgba(255,255,255,0.9);
-  font-size: 0.95rem;
-  vertical-align: middle;
-}
-
-.naviera-cell {
-  display: flex !important;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  padding: 15px !important;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
+.pagination-info {
+  color: rgba(255,255,255,0.8);
+  font-size: 0.85rem;
+}
+
+.pagination-controls {
+  display: flex;
+  gap: 5px;
+}
+
+.pagination-btn {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.8rem;
+}
+
+.pagination-btn:hover {
+  background: rgba(255,255,255,0.2);
+  border-color: rgba(255,255,255,0.3);
+}
+
+.pagination-btn.active {
+  background: #3b82f6;
+  border-color: #3b82f6;
+  box-shadow: 0 0 10px rgba(59,130,246,0.5);
+}
+
+/* Responsive para móviles únicamente */
+@media (max-width: 768px) {
+  .tables-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .epic-table {
+    font-size: 0.8rem;
+    min-width: 450px;
+  }
+  
+  .epic-table th,
+  .epic-table td {
+    padding: 8px 6px;
+    font-size: 0.75rem;
+  }
+  
+  .table-pagination {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+  .epic-table {
+    min-width: 400px;
+    font-size: 0.7rem;
+  }
+  
+  .epic-table th,
+  .epic-table td {
+    padding: 6px 4px;
+    font-size: 0.7rem;
+    max-width: 80px;
+  }
+  
+  .panel-header {
+    padding: 15px;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .epic-table-container {
+    padding: 15px;
+  }
+}
+
+/* Estilos adicionales para los datos de la tabla */
 .naviera-logo {
-  width: 40px !important;
-  height: 40px !important;
-  border-radius: 10px;
+  height: 25px;
+  width: auto;
   object-fit: contain;
-  background: white;
-  padding: 6px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-}
-
-.vessel-cell {
-  font-weight: 700 !important;
-  color: #4FC3F7 !important;
-  font-size: 1.1rem !important;
-}
-
-.time-cell {
-  font-family: 'Courier New', monospace !important;
-  font-weight: 700 !important;
-  color: #66BB6A !important;
-  font-size: 1rem !important;
-  text-align: center;
 }
 
 .status-badge {
-  padding: 8px 16px !important;
-  border-radius: 20px !important;
-  font-size: 0.8rem !important;
-  font-weight: 700 !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.5px;
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  display: inline-block;
 }
 
-.status-completed, .status-confirmado, .status-listo {
-  background: rgba(76,175,80,0.2) !important;
-  color: #4CAF50 !important;
-  border: 1px solid rgba(76,175,80,0.4);
+.status-badge.confirmado {
+  background: rgba(16,185,129,0.2);
+  color: #10b981;
+  border: 1px solid #10b981;
 }
 
-.status-enroute, .status-transito {
-  background: rgba(33,150,243,0.2) !important;
-  color: #2196F3 !important;
-  border: 1px solid rgba(33,150,243,0.4);
+.status-badge.atracado {
+  background: rgba(59,130,246,0.2);
+  color: #3b82f6;
+  border: 1px solid #3b82f6;
 }
 
-.status-scheduled, .status-programado {
-  background: rgba(255,193,7,0.2) !important;
-  color: #FFC107 !important;
-  border: 1px solid rgba(255,193,7,0.4);
+.status-badge.transito {
+  background: rgba(245,158,11,0.2);
+  color: #f59e0b;
+  border: 1px solid #f59e0b;
 }
 
-.status-atracado {
-  background: rgba(156,39,176,0.2) !important;
-  color: #9C27B0 !important;
-  border: 1px solid rgba(156,39,176,0.4);
+.status-badge.embarcando {
+  background: rgba(168,85,247,0.2);
+  color: #a855f7;
+  border: 1px solid #a855f7;
 }
 
-.status-embarcando {
-  background: rgba(255,87,34,0.2) !important;
-  color: #FF5722 !important;
-  border: 1px solid rgba(255,87,34,0.4);
+.status-badge.programado {
+  background: rgba(6,182,212,0.2);
+  color: #06b6d4;
+  border: 1px solid #06b6d4;
 }
 
-/* ...existing code... */
+.status-badge.unknown {
+  background: rgba(156,163,175,0.2);
+  color: #9ca3af;
+  border: 1px solid #9ca3af;
+}
+
+.data-row {
+  animation: fadeInRow 0.5s ease-out forwards;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+@keyframes fadeInRow {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.naviera-cell,
+.vessel-cell,
+.origin-cell,
+.destination-cell,
+.time-cell,
+.status-cell {
+  vertical-align: middle;
+}
+
+.time-cell {
+  font-family: 'Courier New', monospace;
+  font-weight: 600;
+}
+
+.vessel-cell {
+  font-weight: 600;
+  color: #3b82f6;
+}
 </style>
 <script>
 async function checkServerHealth() {
@@ -2057,6 +2229,7 @@ async function cargarSalidas() {
         const datos = await response.json();
         console.log('📊 Datos salidas recibidos:', datos);
         
+        
         const tabla = document.getElementById('departures-tbody');
         if (tabla && datos && datos.length > 0) {
             tabla.innerHTML = datos.map(item => `
@@ -2277,6 +2450,39 @@ window.recargarDatos = function() {
     console.log('🔄 Recarga manual solicitada');
     cargarTodosDatos();
 };
+
+// Carrusel centrado simple
+let currentSlide = 0;
+const totalSlides = 4;
+const metricsGrid = document.querySelector('.metrics-grid');
+const dots = document.querySelectorAll('.dot');
+
+function updateCarousel() {
+    if (metricsGrid) {
+        const offset = currentSlide * -375; // ancho de tarjeta + gap
+        metricsGrid.style.transform = `translateX(calc(-50% + ${offset}px))`;
+    }
+    
+    dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentSlide);
+    });
+}
+
+function nextSlide() {
+    currentSlide = (currentSlide + 1) % totalSlides;
+    updateCarousel();
+}
+
+// Auto avance cada 5 segundos
+setInterval(nextSlide, 5000);
+
+// Click en dots
+dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+        currentSlide = index;
+        updateCarousel();
+    });
+});
 
 console.log('✅ Script de dashboard cargado');
 </script>
