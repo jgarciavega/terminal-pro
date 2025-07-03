@@ -599,6 +599,43 @@
 
 /* ESTILOS ULTRA ESPECTACULARES  */
 
+/* =============================
+   🎨 VARIABLES CSS OPTIMIZADAS 🎨
+   ============================= */
+:root {
+  /* Colores de transparencia más usados */
+  --glass-transparent: rgba(255,255,255,0.1);
+  --glass-light: rgba(255,255,255,0.05);
+  --glass-medium: rgba(255,255,255,0.08);
+  --glass-border: rgba(255,255,255,0.15);
+  --glass-border-light: rgba(255,255,255,0.1);
+  --glass-border-strong: rgba(255,255,255,0.2);
+  --glass-bg-subtle: rgba(255,255,255,0.02);
+  --glass-bg-medium: rgba(255,255,255,0.05);
+  --glass-bg-strong: rgba(255,255,255,0.12);
+  
+  /* Sombras más usadas */
+  --shadow-soft: 0 4px 20px rgba(0,0,0,0.1);
+  --shadow-medium: 0 8px 32px rgba(0,0,0,0.3);
+  --shadow-strong: 0 10px 30px rgba(0,0,0,0.2);
+  --shadow-glow: 0 0 20px rgba(255,255,255,0.3);
+  
+  /* Bordes redondeados */
+  --radius-small: 12px;
+  --radius-medium: 20px;
+  --radius-large: 25px;
+  
+  /* Colores de estado */
+  --status-favorable: #10b981;
+  --status-acceptable: #f59e0b;
+  --status-caution: #ef4444;
+  --status-info: #3b82f6;
+  
+  /* Transiciones */
+  --transition-smooth: all 0.3s ease;
+  --transition-slow: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -1173,11 +1210,11 @@ body {
 }
 
 .status-panel {
-  background: rgba(255,255,255,0.1);
+  background: var(--glass-transparent);
   backdrop-filter: blur(20px);
   border-radius: 15px;
   padding: 12px;
-  border: 1px solid rgba(255,255,255,0.2);
+  border: 1px solid var(--glass-border-strong);
 }
 
 .system-status {
@@ -1242,12 +1279,12 @@ body {
   display: flex;
   align-items: center;
   gap: 10px;
-  background: rgba(255,255,255,0.1);
+  background: var(--glass-transparent);
   backdrop-filter: blur(20px);
   padding: 12px;
   border-radius: 12px;
-  border: 1px solid rgba(255,255,255,0.2);
-  transition: all 0.3s ease;
+  border: 1px solid var(--glass-border-strong);
+  transition: var(--transition-smooth);
 }
 
 .route-item:hover {
@@ -1362,9 +1399,9 @@ body {
     rgba(255,255,255,0.05) 100%);
   border-radius: 15px;
   padding: 20px;
-  border: 1px solid rgba(255,255,255,0.2);
+  border: 1px solid var(--glass-border-strong);
   backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
+  transition: var(--transition-smooth);
   position: relative;
   overflow: hidden;
 }
@@ -1478,10 +1515,10 @@ body {
   display: flex;
   align-items: center;
   background: linear-gradient(135deg, 
-    rgba(255, 255, 255, 0.08) 0%, 
-    rgba(255, 255, 255, 0.02) 100%);
-  border: 2px solid rgba(255, 255, 255, 0.15);
-  border-radius: 20px;
+    var(--glass-medium) 0%, 
+    var(--glass-bg-subtle) 100%);
+  border: 2px solid var(--glass-border);
+  border-radius: var(--radius-medium);
   padding: 16px 20px;
   position: relative;
   overflow: hidden;
@@ -2054,18 +2091,18 @@ body {
    ============================= */
 
 .table-panel {
-  background: rgba(255,255,255,0.05);
+  background: var(--glass-light);
   backdrop-filter: blur(20px);
-  border-radius: 25px;
-  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-large);
+  border: 1px solid var(--glass-border-light);
   overflow: hidden;
-  transition: all 0.3s ease;
+  transition: var(--transition-smooth);
 }
 
 .table-panel:hover {
   transform: translateY(-2px);
-  border-color: rgba(255,255,255,0.2);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  border-color: var(--glass-border-strong);
+  box-shadow: var(--shadow-strong);
 }
 
 .panel-header {
@@ -2171,19 +2208,19 @@ body {
 }
 
 .pagination-btn {
-  background: rgba(255,255,255,0.1);
-  border: 1px solid rgba(255,255,255,0.15);
+  background: var(--glass-transparent);
+  border: 1px solid var(--glass-border);
   color: white;
   padding: 8px 12px;
-  border-radius: 8px;
+  border-radius: var(--radius-small);
   cursor: pointer;
   font-size: 0.85rem;
   font-weight: 600;
-  transition: all 0.3s ease;
+  transition: var(--transition-smooth);
 }
 
 .pagination-btn:hover {
-  background: rgba(255,255,255,0.2);
+  background: var(--glass-border-strong);
   border-color: rgba(255,255,255,0.3);
 }
 

@@ -15,6 +15,23 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// ============================= 
+// 🌐 MIDDLEWARE PARA WEB
+// =============================
+
+// CORS para permitir acceso desde navegadores
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+  
+  if (req.method === 'OPTIONS') {
+    res.sendStatus(200);
+  } else {
+    next();
+  }
+});
+
 // Middleware para analizar JSON
 app.use(express.json());
 
@@ -845,6 +862,244 @@ app.get('/api/dashboard-data', async (req, res) => {
       departures: 0,
       vessels: 0,
       recentOperations: []
+    });
+  }
+});
+
+// =============================
+// 🌊 ENDPOINTS PARA TERMINAL-API.JS
+// =============================
+
+// 🚢 API específica para arribos
+app.get('/api/arribos', async (req, res) => {
+  try {
+    const [rows] = await pool.query(`
+      SELECT 
+        naviera,
+        buque,
+        destino,
+        muelle,
+        atraque,
+        estatus as estado,
+        hora,
+        fecha_arribo
+      FROM arribos 
+      WHERE fecha_arribo = CURDATE() OR fecha_arribo IS NULL
+      ORDER BY hora ASC
+    `);
+    
+    res.json({
+      success: true,
+      data: rows,
+      timestamp: new Date().toISOString(),
+      source: 'database'
+    });
+  } catch (err) {
+    console.error('❌ Error en /api/arribos:', err.message);
+    res.status(500).json({
+      success: false,
+      error: err.message,
+      data: []
+    });
+  }
+});
+
+// ⛵ API específica para salidas
+app.get('/api/salidas', async (req, res) => {
+  try {
+    const [rows] = await pool.query(`
+      SELECT 
+        naviera,
+        buque,
+        destino,
+        muelle,
+        atraque,
+        estatus as estado,
+        hora,
+        fecha_salida
+      FROM salidas 
+      WHERE fecha_salida = CURDATE() OR fecha_salida IS NULL
+      ORDER BY hora ASC
+    `);
+    
+    res.json({
+      success: true,
+      data: rows,
+      timestamp: new Date().toISOString(),
+      source: 'database'
+    });
+  } catch (err) {
+    console.error('❌ Error en /api/salidas:', err.message);
+    res.status(500).json({
+      success: false,
+      error: err.message,
+      data: []
+    });
+  }
+});
+
+// 📊 API para métricas del dashboard
+app.get('/api/metricas', async (req, res) => {
+  try {
+    // Contar arribos hoy
+    const [arribosCount] = await pool.query(`
+      SELECT COUNT(*) as count FROM arribos 
+      WHERE fecha_arribo = CURDATE() OR fecha_arribo IS NULL
+    `);
+    
+    // Contar salidas hoy
+    const [salidasCount] = await pool.query(`
+      SELECT COUNT(*) as count FROM salidas 
+      WHERE fecha_salida = CURDATE() OR fecha_salida IS NULL
+    `);
+    
+    // Contar rutas activas (destinos únicos)
+    const [rutasCount] = await pool.query(`
+      SELECT COUNT(DISTINCT destino) as count FROM 
+      (SELECT destino FROM arribos WHERE fecha_arribo = CURDATE() OR fecha_arribo IS NULL
+       UNION 
+       SELECT destino FROM salidas WHERE fecha_salida = CURDATE() OR fecha_salida IS NULL) as rutas
+    `);
+    
+    // Contar buques en puerto (aproximación)
+    const [buquesEnPuerto] = await pool.query(`
+      SELECT 
+        (SELECT COUNT(*) FROM arribos WHERE (fecha_arribo = CURDATE() OR fecha_arribo IS NULL) AND estatus IN ('Atracado', 'Cargando', 'Esperando')) as count
+    `);
+    
+    res.json({
+      success: true,
+      data: {
+        arribos_hoy: arribosCount[0].count,
+        salidas_hoy: salidasCount[0].count,
+        rutas_activas: rutasCount[0].count,
+        buques_puerto: Math.max(0, buquesEnPuerto[0].count)
+      },
+      timestamp: new Date().toISOString(),
+      source: 'database'
+    });
+  } catch (err) {
+    console.error('❌ Error en /api/metricas:', err.message);
+    res.status(500).json({
+      success: false,
+      error: err.message,
+      data: {
+        arribos_hoy: 0,
+        salidas_hoy: 0,
+        rutas_activas: 0,
+        buques_puerto: 0
+      }
+    });
+  }
+});
+
+// 🌤️ API para clima (mock por ahora, después conectaremos API real)
+app.get('/api/clima/:puerto?', async (req, res) => {
+  const { puerto } = req.params;
+  
+  // Datos mock de clima por ahora
+  const climaData = {
+    lapaz: {
+      temperatura: Math.floor(Math.random() * 10) + 25, // 25-35°C
+      condicion: "Soleado",
+      icono: "☀️",
+      viento: `${Math.floor(Math.random() * 10) + 10} km/h NE`,
+      humedad: `${Math.floor(Math.random() * 20) + 60}%`,
+      oleaje: `${(Math.random() * 1 + 0.5).toFixed(1)}m`,
+      visibilidad: `${Math.floor(Math.random() * 10) + 10} km`,
+      status: "favorable"
+    },
+    mazatlan: {
+      temperatura: Math.floor(Math.random() * 8) + 28,
+      condicion: "Parcialmente nublado",
+      icono: "⛅",
+      viento: `${Math.floor(Math.random() * 8) + 10} km/h E`,
+      humedad: `${Math.floor(Math.random() * 15) + 65}%`,
+      oleaje: `${(Math.random() * 0.8 + 0.8).toFixed(1)}m`,
+      visibilidad: `${Math.floor(Math.random() * 8) + 10} km`,
+      status: "acceptable"
+    },
+    topolobampo: {
+      temperatura: Math.floor(Math.random() * 12) + 26,
+      condicion: "Despejado",
+      icono: "🌤️",
+      viento: `${Math.floor(Math.random() * 12) + 15} km/h NW`,
+      humedad: `${Math.floor(Math.random() * 15) + 55}%`,
+      oleaje: `${(Math.random() * 0.6 + 0.3).toFixed(1)}m`,
+      visibilidad: `${Math.floor(Math.random() * 12) + 15} km`,
+      status: "favorable"
+    }
+  };
+  
+  try {
+    res.json({
+      success: true,
+      data: puerto ? climaData[puerto] : climaData,
+      timestamp: new Date().toISOString(),
+      source: 'mock'
+    });
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      error: err.message
+    });
+  }
+});
+
+// 📱 API para dashboard completo
+app.get('/api/dashboard', async (req, res) => {
+  try {
+    // Llamar a todos los endpoints internamente
+    const [arribosRes, salidasRes, metricasRes] = await Promise.allSettled([
+      pool.query(`SELECT naviera, buque, destino as origen, hora, estatus as estado FROM arribos WHERE DATE(fecha) = CURDATE() ORDER BY hora ASC`),
+      pool.query(`SELECT naviera, buque, destino, hora, estatus as estado FROM salidas WHERE DATE(fecha) = CURDATE() ORDER BY hora ASC`),
+      pool.query(`SELECT COUNT(*) as arribos_hoy FROM arribos WHERE DATE(fecha) = CURDATE()`)
+    ]);
+    
+    res.json({
+      success: true,
+      data: {
+        arribos: arribosRes.status === 'fulfilled' ? arribosRes.value[0] : [],
+        salidas: salidasRes.status === 'fulfilled' ? salidasRes.value[0] : [],
+        metricas: metricasRes.status === 'fulfilled' ? metricasRes.value[0] : [],
+        clima: {
+          lapaz: { temperatura: 28, condicion: "Soleado", status: "favorable" },
+          mazatlan: { temperatura: 32, condicion: "Nublado", status: "acceptable" },
+          topolobampo: { temperatura: 30, condicion: "Despejado", status: "favorable" }
+        }
+      },
+      timestamp: new Date().toISOString(),
+      source: 'database'
+    });
+  } catch (err) {
+    console.error('❌ Error en /api/dashboard:', err.message);
+    res.status(500).json({
+      success: false,
+      error: err.message
+    });
+  }
+});
+
+// 🔍 API de status del sistema
+app.get('/api/status', async (req, res) => {
+  try {
+    // Probar conexión a base de datos
+    const [rows] = await pool.query('SELECT 1 as test');
+    
+    res.json({
+      success: true,
+      status: 'online',
+      database: 'connected',
+      timestamp: new Date().toISOString(),
+      version: '1.0.0'
+    });
+  } catch (err) {
+    res.json({
+      success: false,
+      status: 'error',
+      database: 'disconnected',
+      error: err.message,
+      timestamp: new Date().toISOString()
     });
   }
 });
