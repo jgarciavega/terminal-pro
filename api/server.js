@@ -55,21 +55,43 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/app.html'));
 });
 
-// ✅ API para consultar datos de arribos y salidas
+// ✅ API para consultar buques (con filtros opcionales)
 app.get('/api/buques', async (req, res) => {
   try {
-    const [arribos] = await pool.query(`
-      SELECT naviera, buque, destino, muelle, atraque, estatus, hora
-      FROM arribos
-    `);
-    const [salidas] = await pool.query(`
-      SELECT naviera, buque, destino, muelle, atraque, estatus, hora
-      FROM salidas
-    `);
-    res.json({ arribos, salidas });
+    const { naviera_id } = req.query;
+    
+    let query = `
+      SELECT b.*, n.nombre as naviera_nombre, n.codigo as naviera_codigo
+      FROM buques b
+      LEFT JOIN navieras n ON b.naviera_id = n.id
+      WHERE b.activo = 1
+    `;
+    const params = [];
+    
+    if (naviera_id) {
+      query += ' AND b.naviera_id = ?';
+      params.push(naviera_id);
+    }
+    
+    query += ' ORDER BY b.nombre';
+    
+    const [buques] = await pool.execute(query, params);
+    
+    res.json({
+      success: true,
+      buques: buques,
+      total: buques.length,
+      timestamp: new Date().toISOString(),
+      source: 'database'
+    });
+    
   } catch (err) {
     console.error('❌ Error en /api/buques:', err.message);
-    res.status(500).json({ error: err.message });
+    res.status(500).json({ 
+      success: false,
+      error: err.message,
+      timestamp: new Date().toISOString()
+    });
   }
 });
 
@@ -877,6 +899,7 @@ app.get('/api/arribos', async (req, res) => {
       SELECT 
         naviera,
         buque,
+        origen,
         destino,
         muelle,
         atraque,
@@ -911,6 +934,7 @@ app.get('/api/salidas', async (req, res) => {
       SELECT 
         naviera,
         buque,
+        origen,
         destino,
         muelle,
         atraque,
@@ -1110,22 +1134,23 @@ app.listen(PORT, () => {
   🚢 ====================================
      TERMINAL DOS - Puerto La Paz
   ====================================
-  
-  ✅ Servidor ejecutándose en puerto ${PORT}
-  🌐 Accede a: http://localhost:${PORT}
-  
-  📊 Dashboard: http://localhost:${PORT}/dashboard.html
-  📋 Operaciones: http://localhost:${PORT}/app.html
-  📄 Índice: http://localhost:${PORT}/index.html
-  
-  🔗 API Endpoints:
-     • GET  /api/buques (datos básicos)
-     • GET  /api/buques-paginado (paginación avanzada)
-     • GET  /api/metricas-dia (métricas dashboard)
-     • POST /api/datos-ejemplo (cargar datos de prueba)
-     • GET  /reset-db (restaurar base de datos)
-  
-  ⚡ Listo para manejar operaciones marítimas!
-  ====================================
-  `);
+  Dashboard Nuevo: http://localhost:3000/dashboard-nuevo.html
+
+✅ Servidor ejecutándose en puerto ${PORT}
+🌐 Accede a: http://localhost:${PORT}
+
+📊 Dashboard: http://localhost:${PORT}/dashboard.html
+📋 Operaciones: http://localhost:${PORT}/app.html
+📄 Índice: http://localhost:${PORT}/index.html
+
+// 🔗 API Endpoints:
+//    • GET  /api/buques (datos básicos)
+//    • GET  /api/buques-paginado (paginación avanzada)
+//    • GET  /api/metricas-dia (métricas dashboard)
+//    • POST /api/datos-ejemplo (cargar datos de prueba)
+//    • GET  /reset-db (restaurar base de datos)
+
+⚡ Listo para manejar operaciones marítimas!
+====================================
+`);
 });

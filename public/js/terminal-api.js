@@ -6,13 +6,16 @@ class TerminalDosAPI {
   constructor() {
     this.baseURL = window.location.origin;
     this.cache = new Map();
-    this.cacheTimeout = 5 * 60 * 1000; // 5 minutos
+    this.cacheTimeout = 0; // Deshabilitar caché completamente para debug
+    console.log('🔧 TerminalDosAPI inicializado - CACHÉ DESHABILITADO');
   }
 
   // Método genérico para llamadas API
   async fetchAPI(endpoint, options = {}) {
     try {
       const url = `${this.baseURL}/api${endpoint}`;
+      console.log(`🌐 Llamando API: ${url}`);
+      
       const response = await fetch(url, {
         headers: {
           'Content-Type': 'application/json',
@@ -21,11 +24,14 @@ class TerminalDosAPI {
         ...options
       });
 
+      console.log(`📡 Respuesta HTTP: ${response.status} ${response.statusText}`);
+
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}: ${response.statusText}`);
       }
 
       const data = await response.json();
+      console.log(`✅ Datos recibidos de ${endpoint}:`, data);
       return data;
     } catch (error) {
       console.error(`❌ Error en API ${endpoint}:`, error);
@@ -54,28 +60,36 @@ class TerminalDosAPI {
   // =============================
 
   async getArribos() {
-    const cached = this.getCached('arribos');
-    if (cached) return cached;
+    // Deshabilitar caché temporalmente para debug
+    // const cached = this.getCached('arribos');
+    // if (cached) return cached;
 
     try {
+      console.log('🔄 Obteniendo arribos desde API...');
       const response = await this.fetchAPI('/arribos');
+      console.log('✅ Arribos recibidos:', response);
       this.setCached('arribos', response);
       return response;
     } catch (error) {
+      console.error('❌ Error obteniendo arribos:', error);
       console.warn('Usando datos mock para arribos');
       return this.getMockArribos();
     }
   }
 
   async getSalidas() {
-    const cached = this.getCached('salidas');
-    if (cached) return cached;
+    // Deshabilitar caché temporalmente para debug
+    // const cached = this.getCached('salidas');
+    // if (cached) return cached;
 
     try {
+      console.log('🔄 Obteniendo salidas desde API...');
       const response = await this.fetchAPI('/salidas');
+      console.log('✅ Salidas recibidas:', response);
       this.setCached('salidas', response);
       return response;
     } catch (error) {
+      console.error('❌ Error obteniendo salidas:', error);
       console.warn('Usando datos mock para salidas');
       return this.getMockSalidas();
     }

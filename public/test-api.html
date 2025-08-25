@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba API - Terminal DOS</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f0f8ff;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .section {
+            background: white;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .loading {
+            color: #3498db;
+            font-style: italic;
+        }
+        .error {
+            color: #e74c3c;
+            background-color: #fdf2f2;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        .data-item {
+            background-color: #f8f9fa;
+            margin: 10px 0;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+        .naviera {
+            font-weight: bold;
+            color: #2980b9;
+        }
+        .buque {
+            font-size: 1.1em;
+            color: #27ae60;
+        }
+        .estado {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            color: white;
+            font-size: 0.9em;
+            margin-left: 10px;
+        }
+        .estado.confirmado { background-color: #27ae60; }
+        .estado.en-transito { background-color: #f39c12; }
+        .estado.programado { background-color: #3498db; }
+        .estado.esperando { background-color: #e67e22; }
+        .estado.embarcando { background-color: #9b59b6; }
+        .estado.listo { background-color: #1abc9c; }
+        .estado.cargando { background-color: #34495e; }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚢 Prueba API - Terminal DOS</h1>
+        
+        <div class="section">
+            <h2>🔧 Controles</h2>
+            <button onclick="testArribos()">Probar Arribos</button>
+            <button onclick="testSalidas()">Probar Salidas</button>
+            <button onclick="testBoth()">Probar Ambos</button>
+        </div>
+
+        <div class="section">
+            <h2>📥 Arribos</h2>
+            <div id="arribos-content">
+                <div class="loading">Haz clic en "Probar Arribos" para cargar datos...</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📤 Salidas</h2>
+            <div id="salidas-content">
+                <div class="loading">Haz clic en "Probar Salidas" para cargar datos...</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Función para mostrar error
+        function showError(containerId, error) {
+            document.getElementById(containerId).innerHTML = 
+                `<div class="error">❌ Error: ${error.message || error}</div>`;
+        }
+
+        // Función para mostrar loading
+        function showLoading(containerId, message) {
+            document.getElementById(containerId).innerHTML = 
+                `<div class="loading">⏳ ${message}...</div>`;
+        }
+
+        // Función para normalizar estado para CSS
+        function normalizeEstado(estado) {
+            return estado.toLowerCase()
+                .replace(/\s+/g, '-')
+                .replace('tránsito', 'transito')
+                .replace('para', '')
+                .replace('zarpar', 'listo');
+        }
+
+        // Función para mostrar arribos
+        async function testArribos() {
+            showLoading('arribos-content', 'Cargando arribos');
+            
+            try {
+                const response = await fetch('/api/arribos');
+                console.log('📡 Respuesta arribos:', response.status);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                
+                const data = await response.json();
+                console.log('✅ Datos arribos:', data);
+                
+                if (!data.success || !data.data) {
+                    throw new Error('Formato de respuesta inválido');
+                }
+
+                const arribos = data.data;
+                let html = `<p><strong>Total arribos encontrados:</strong> ${arribos.length}</p>`;
+                
+                if (arribos.length === 0) {
+                    html += '<div class="error">⚠️ No se encontraron arribos para hoy</div>';
+                } else {
+                    arribos.forEach((arribo, index) => {
+                        const estadoClass = normalizeEstado(arribo.estado || arribo.estatus || 'desconocido');
+                        html += `
+                            <div class="data-item">
+                                <div class="naviera">${arribo.naviera}</div>
+                                <div class="buque">🚢 ${arribo.buque}</div>
+                                <div>📍 Destino: ${arribo.destino}</div>
+                                <div>⏰ Hora: ${arribo.hora}</div>
+                                <div>🏗️ Muelle: ${arribo.muelle || 'N/A'}</div>
+                                <div>📍 Atraque: ${arribo.atraque || 'N/A'}</div>
+                                <span class="estado ${estadoClass}">${arribo.estado || arribo.estatus}</span>
+                            </div>
+                        `;
+                    });
+                }
+                
+                document.getElementById('arribos-content').innerHTML = html;
+                
+            } catch (error) {
+                console.error('❌ Error en arribos:', error);
+                showError('arribos-content', error);
+            }
+        }
+
+        // Función para mostrar salidas
+        async function testSalidas() {
+            showLoading('salidas-content', 'Cargando salidas');
+            
+            try {
+                const response = await fetch('/api/salidas');
+                console.log('📡 Respuesta salidas:', response.status);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                
+                const data = await response.json();
+                console.log('✅ Datos salidas:', data);
+                
+                if (!data.success || !data.data) {
+                    throw new Error('Formato de respuesta inválido');
+                }
+
+                const salidas = data.data;
+                let html = `<p><strong>Total salidas encontradas:</strong> ${salidas.length}</p>`;
+                
+                if (salidas.length === 0) {
+                    html += '<div class="error">⚠️ No se encontraron salidas para hoy</div>';
+                } else {
+                    salidas.forEach((salida, index) => {
+                        const estadoClass = normalizeEstado(salida.estado || salida.estatus || 'desconocido');
+                        html += `
+                            <div class="data-item">
+                                <div class="naviera">${salida.naviera}</div>
+                                <div class="buque">🚢 ${salida.buque}</div>
+                                <div>📍 Destino: ${salida.destino}</div>
+                                <div>⏰ Hora: ${salida.hora}</div>
+                                <div>🏗️ Muelle: ${salida.muelle || 'N/A'}</div>
+                                <div>📍 Atraque: ${salida.atraque || 'N/A'}</div>
+                                <span class="estado ${estadoClass}">${salida.estado || salida.estatus}</span>
+                            </div>
+                        `;
+                    });
+                }
+                
+                document.getElementById('salidas-content').innerHTML = html;
+                
+            } catch (error) {
+                console.error('❌ Error en salidas:', error);
+                showError('salidas-content', error);
+            }
+        }
+
+        // Función para probar ambos
+        async function testBoth() {
+            await testArribos();
+            await testSalidas();
+        }
+
+        // Auto-cargar al cargar la página
+        window.addEventListener('load', () => {
+            console.log('🚢 Página de prueba cargada');
+            testBoth();
+        });
+    </script>
+</body>
+</html>

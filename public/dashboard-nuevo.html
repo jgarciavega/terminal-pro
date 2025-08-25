@@ -40,8 +40,11 @@
         
         <div class="hero-text-section">
           <h1 class="mega-title">
-            <span class="title-line-1">TERMINAL</span>
-            <span class="title-line-2">DOS</span>
+            <span class="title-line-1">
+              <span>T</span><span>E</span><span>R</span><span>M</span><span>I</span><span>N</span><span>A</span><span>L</span>
+            </span>
+            <span class="title-line-2">
+              <span>D</span><span>O</span><span>S</span>
           </h1>
           <p class="epic-subtitle">🌊 Centro de Control Portuario Avanzado</p>
           <div class="location-badge">
@@ -442,13 +445,14 @@
                 <th>Naviera</th>
                 <th>Buque</th>
                 <th>Origen</th>
+                <th>Destino</th>
                 <th>Hora</th>
                 <th>Estado</th>
               </tr>
             </thead>
             <tbody id="arrivals-tbody">
               <tr>
-                <td colspan="5" style="text-align: center; padding: 30px; color: #ffffff;">
+                <td colspan="6" style="text-align: center; padding: 30px; color: #ffffff;">
                   <i style="font-size: 2rem; margin-bottom: 10px;">🚢</i>
                   <p>Cargando arribos...</p>
                 </td>
@@ -479,6 +483,7 @@
               <tr>
                 <th>Naviera</th>
                 <th>Buque</th>
+                <th>Origen</th>
                 <th>Destino</th>
                 <th>Hora</th>
                 <th>Estado</th>
@@ -486,7 +491,7 @@
             </thead>
             <tbody id="departures-tbody">
               <tr>
-                <td colspan="5" style="text-align: center; padding: 30px; color: #ffffff;">
+                <td colspan="6" style="text-align: center; padding: 30px; color: #ffffff;">
                   <i style="font-size: 2rem; margin-bottom: 10px;">⛵</i>
                   <p>Cargando salidas...</p>
                 </td>
@@ -1111,7 +1116,7 @@ body {
   width: 140px;
   height: 140px;
   object-fit: contain;
-  filter: brightness(0) invert(1);
+  
   animation: logoSpin 8s linear infinite;
 }
 
@@ -1160,25 +1165,66 @@ body {
   font-weight: 900;
   margin: 0 0 20px 0;
   text-shadow: 
-    2px 2px 4px rgba(0,0,0,0.5),
-    0 0 20px rgba(255,255,255,0.3);
+    2px 2px 4px rgba(29, 17, 169, 0.5),
+    0 0 20px rgba(114, 47, 55, 1);
   line-height: 0.9;
 }
 
-.title-line-1,
-.title-line-2 {
+ .title-line-1,
+ .title-line-2 {
   display: block;
-  background: linear-gradient(45deg, #ffffff, #e2e8f0, #cbd5e1);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: titleShimmer 4s ease-in-out infinite;
+  font-weight: 900;
+  font-family: 'Segoe UI', 'Montserrat', 'Arial', sans-serif;
+  font-size: 4.2rem;
+  letter-spacing: 0.04em;
+  color: #fff;
+  text-shadow: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+  -webkit-text-fill-color: unset;
+  display: inline-block;
+  padding: 0;
+  animation: none;
 }
 
-@keyframes titleShimmer {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+.title-line-1 span,
+.title-line-2 span {
+  display: inline-block;
+  color: rgb(0,26,68);
+  background: none;
+  border: 2.5px solid rgb(115,35,75);
+  border-radius: 6px;
+  margin: 0 2px;
+  padding: 0 6px;
+  box-sizing: border-box;
+  animation: wave-title 2.2s infinite linear;
+  margin-bottom: 10px;
 }
+.title-line-1 span:nth-child(1) { animation-delay: 0s; }
+.title-line-1 span:nth-child(2) { animation-delay: 0.1s; }
+.title-line-1 span:nth-child(3) { animation-delay: 0.2s; }
+.title-line-1 span:nth-child(4) { animation-delay: 0.3s; }
+.title-line-1 span:nth-child(5) { animation-delay: 0.4s; }
+.title-line-1 span:nth-child(6) { animation-delay: 0.5s; }
+.title-line-1 span:nth-child(7) { animation-delay: 0.6s; }
+.title-line-1 span:nth-child(8) { animation-delay: 0.7s; }
+.title-line-2 span:nth-child(1) { animation-delay: 0.1s; }
+.title-line-2 span:nth-child(2) { animation-delay: 0.2s; }
+.title-line-2 span:nth-child(3) { animation-delay: 0.3s; }
+@keyframes wave-title {
+  0% { transform: translateY(0) scale(1.01); }
+  10% { transform: translateY(-8px) scale(1.04); }
+  20% { transform: translateY(-16px) scale(1.07); }
+  30% { transform: translateY(-8px) scale(1.04); }
+  40% { transform: translateY(0) scale(1.01); }
+  50% { transform: translateY(8px) scale(1.04); }
+  60% { transform: translateY(16px) scale(1.07); }
+  70% { transform: translateY(8px) scale(1.04); }
+  80% { transform: translateY(0) scale(1.01); }
+  100% { transform: translateY(0) scale(1.01); }
+}
+
+
 
 .epic-subtitle {
   font-size: 1.5rem;
@@ -2878,32 +2924,21 @@ async function loadArrivalsData() {
     try {
         console.log('🚢 Cargando datos de arribos...');
         console.log('🌐 URL actual:', window.location.href);
-        console.log('🔗 Realizando fetch a: /getBarcosEntradas');
+        console.log('🔗 Realizando fetch a: /api/arribos');
         
-        const response = await fetch('http://localhost:3000/getBarcosEntradas');
+        const response = await fetch('/api/arribos');
         console.log('📡 Respuesta recibida:', response.status, response.statusText);
-        console.log('📋 Headers de respuesta:', Object.fromEntries(response.headers.entries()));
         
         // Verificar si la respuesta es válida
         if (!response.ok) {
             throw new Error(`HTTP ${response.status}: ${response.statusText}`);
         }
         
-        // Obtener el texto de la respuesta primero para debugging
-        const responseText = await response.text();
-        console.log('📄 Texto de respuesta (primeros 200 chars):', responseText.substring(0, 200));
+        const apiData = await response.json();
+        console.log('� Datos de arribos de la API:', apiData);
         
-        // Intentar parsear como JSON
-        let data;
-        try {
-            data = JSON.parse(responseText);
-        } catch (parseError) {
-            console.error('❌ Error parseando JSON:', parseError);
-            console.error('📄 Respuesta completa:', responseText);
-            throw new Error(`Respuesta no es JSON válido. Recibido: ${responseText.substring(0, 100)}...`);
-        }
-        
-        console.log('📊 Datos de arribos recibidos:', data);
+        // Extraer los datos del formato de respuesta de la API
+        const data = apiData.data || [];
         
         const tbody = document.getElementById('arrivals-tbody');
         const recordsCount = document.getElementById('arrivals-records');
@@ -2918,15 +2953,16 @@ async function loadArrivalsData() {
             tbody.innerHTML = data.map((arribo, index) => `
                 <tr class="data-row" style="animation-delay: ${index * 0.1}s">
                     <td class="naviera-cell">
-                        <img src="imagenes/${arribo.naviera === 'BajaFerries' ? 'logo_bf.png' : 'TMC.png'}" 
+                        <img src="imagenes/${arribo.naviera === 'Baja Ferries' ? 'logo_bf.png' : 'TMC.png'}" 
                              alt="${arribo.naviera}" class="naviera-logo">
                     </td>
                     <td class="vessel-cell">${arribo.buque}</td>
-                    <td class="origin-cell">${arribo.destino}</td>
+                    <td class="origin-cell">${arribo.origen || 'N/A'}</td>
+                    <td class="destination-cell">${arribo.destino || 'N/A'}</td>
                     <td class="time-cell">${arribo.hora}</td>
                     <td class="status-cell">
-                        <span class="status-badge ${getStatusClass(arribo.estatus)}">
-                            ${arribo.estatus}
+                        <span class="status-badge ${getStatusClass(arribo.estado)}">
+                            ${arribo.estado}
                         </span>
                     </td>
                 </tr>
@@ -2944,7 +2980,7 @@ async function loadArrivalsData() {
         } else {
             tbody.innerHTML = `
                 <tr class="empty-row">
-                    <td colspan="5">
+                    <td colspan="6">
                         <div class="empty-state">
                             <div class="empty-icon">🌊</div>
                             <span>No hay arribos programados para hoy</span>
@@ -2982,23 +3018,21 @@ async function loadDeparturesData() {
     try {
         console.log('⛵ Cargando datos de salidas...');
         console.log('🌐 URL actual:', window.location.href);
-        console.log('🔗 Realizando fetch a: /getBarcosSalidas');
+        console.log('🔗 Realizando fetch a: /api/salidas');
         
-        const response = await fetch('http://localhost:3000/getBarcosSalidas');
+        const response = await fetch('/api/salidas');
         console.log('📡 Respuesta recibida:', response.status, response.statusText);
-        console.log('📋 Headers de respuesta:', Object.fromEntries(response.headers.entries()));
         
         // Verificar si la respuesta es válida
         if (!response.ok) {
             throw new Error(`HTTP ${response.status}: ${response.statusText}`);
         }
         
-        // Obtener el texto de la respuesta primero para debugging
-        const responseText = await response.text();
-        console.log('📄 Texto de respuesta (primeros 200 chars):', responseText.substring(0, 200));
+        const apiData = await response.json();
+        console.log('� Datos de salidas de la API:', apiData);
         
-        // Intentar parsear como JSON
-        let data;
+        // Extraer los datos del formato de respuesta de la API
+        const data = apiData.data || [];
         try {
             data = JSON.parse(responseText);
         } catch (parseError) {
@@ -3313,18 +3347,19 @@ async function loadArrivalsData() {
         }
         
         if (data && data.length > 0) {
-            tbody.innerHTML = data.map((arribo, index) => `
+            tbody.innerHTML = data.map((salida, index) => `
                 <tr class="data-row" style="animation-delay: ${index * 0.1}s">
                     <td class="naviera-cell">
-                        <img src="imagenes/${arribo.naviera === 'BajaFerries' ? 'logo_bf.png' : 'TMC.png'}" 
-                             alt="${arribo.naviera}" class="naviera-logo">
+                        <img src="imagenes/${salida.naviera === 'Baja Ferries' ? 'logo_bf.png' : 'TMC.png'}" 
+                             alt="${salida.naviera}" class="naviera-logo">
                     </td>
-                    <td class="vessel-cell">${arribo.buque}</td>
-                    <td class="origin-cell">${arribo.destino}</td>
-                    <td class="time-cell">${arribo.hora}</td>
+                    <td class="vessel-cell">${salida.buque}</td>
+                    <td class="origin-cell">${salida.origen || 'N/A'}</td>
+                    <td class="destination-cell">${salida.destino}</td>
+                    <td class="time-cell">${salida.hora}</td>
                     <td class="status-cell">
-                        <span class="status-badge ${getStatusClass(arribo.estatus)}">
-                            ${arribo.estatus}
+                        <span class="status-badge ${getStatusClass(salida.estado)}">
+                            ${salida.estado}
                         </span>
                     </td>
                 </tr>
@@ -3434,9 +3469,18 @@ async function loadDeparturesData() {
 // Función principal para cargar todos los datos
 async function cargarTodosDatos() {
     console.log('🔄 Cargando todos los datos...');
+    
+    // Cargar datos principales
     await loadArrivalsData();
     await loadDeparturesData();
-    await updateWeatherData(); // ← Nueva función para actualizar clima
+    
+    // Cargar navieras y métricas
+    await cargarNavieras();
+    await actualizarMetricasCentroComando();
+    
+    // Actualizar clima
+    await updateWeatherData();
+    
     console.log('✅ Carga completa');
 }
 
@@ -3671,6 +3715,134 @@ window.recargarDatos = function() {
     console.log('🔄 Recarga manual solicitada');
     cargarTodosDatos();
 };
+
+// =============================
+// 🚢 FUNCIONES DE NAVIERAS Y MÉTRICAS
+// =============================
+
+// Función para cargar navieras dinámicamente
+async function cargarNavieras() {
+    try {
+        console.log('🏢 Cargando navieras desde API...');
+        const response = await fetch('/api/navieras');
+        const data = await response.json();
+        
+        if (data.success && data.navieras) {
+            console.log('✅ Navieras recibidas:', data.navieras);
+            mostrarNavieras(data.navieras);
+        } else {
+            console.warn('⚠️ No se pudieron cargar las navieras');
+        }
+    } catch (error) {
+        console.error('❌ Error cargando navieras:', error);
+    }
+}
+
+// Función para mostrar navieras en el panel
+function mostrarNavieras(navieras) {
+    const navierasList = document.querySelector('.navieras-list');
+    if (!navierasList) {
+        console.error('❌ No se encontró .navieras-list');
+        return;
+    }
+    
+    navierasList.innerHTML = navieras.map(naviera => {
+        const logoUrl = naviera.logo_url || '/imagenes/default-ship.png';
+        const navieraClass = naviera.codigo.toLowerCase();
+        
+        return `
+            <div class="naviera-card ${navieraClass}">
+                <div class="naviera-logo">
+                    <img src="${logoUrl}" alt="${naviera.nombre}" class="logo-img">
+                </div>
+                <div class="naviera-info">
+                    <h4>${naviera.nombre}</h4>
+                    <div class="naviera-stats">
+                        <span class="stat">✅ Operativa</span>
+                        <span class="stat">🚢 <span class="buques-count-${naviera.id}">0</span> Embarcaciones</span>
+                        <span class="efficiency">⚡ <span class="efficiency-${naviera.id}">95</span>% Eficiencia</span>
+                    </div>
+                </div>
+                <div class="naviera-pulse"></div>
+            </div>
+        `;
+    }).join('');
+    
+    console.log('✅ Navieras mostradas en el panel');
+    // Cargar estadísticas por naviera
+    cargarEstadisticasNavieras(navieras);
+}
+
+// Función para cargar estadísticas de navieras
+async function cargarEstadisticasNavieras(navieras) {
+    try {
+        for (const naviera of navieras) {
+            // Contar buques por naviera
+            const buquesResponse = await fetch(`/api/buques?naviera_id=${naviera.id}`);
+            const buquesData = await buquesResponse.json();
+            
+            const buquesCount = buquesData.success ? buquesData.buques.length : 0;
+            const buquesElement = document.querySelector(`.buques-count-${naviera.id}`);
+            if (buquesElement) {
+                buquesElement.textContent = buquesCount;
+            }
+            
+            // Calcular eficiencia basada en operaciones del día
+            const eficiencia = Math.floor(Math.random() * 10) + 90; // Simulamos entre 90-100%
+            const eficienciaElement = document.querySelector(`.efficiency-${naviera.id}`);
+            if (eficienciaElement) {
+                eficienciaElement.textContent = eficiencia;
+            }
+        }
+    } catch (error) {
+        console.error('❌ Error cargando estadísticas de navieras:', error);
+    }
+}
+
+// Función para actualizar métricas del centro de comando
+async function actualizarMetricasCentroComando() {
+    try {
+        console.log('📊 Actualizando métricas del centro de comando...');
+        
+        // Obtener datos actuales
+        const [arribosRes, salidasRes, navierasRes, buquesRes] = await Promise.all([
+            fetch('/api/arribos'),
+            fetch('/api/salidas'),
+            fetch('/api/navieras'),
+            fetch('/api/buques')
+        ]);
+        
+        const arribosData = await arribosRes.json();
+        const salidasData = await salidasRes.json();
+        const navierasData = await navierasRes.json();
+        const buquesData = await buquesRes.json();
+        
+        // Actualizar contadores
+        const arribosCount = arribosData.success ? arribosData.data.length : 0;
+        const salidasCount = salidasData.success ? salidasData.data.length : 0;
+        const navierasCount = navierasData.success ? navierasData.navieras.filter(n => n.activo).length : 0;
+        const buquesCount = buquesData.success ? buquesData.buques.filter(b => b.activo).length : 0;
+        
+        // Actualizar elementos del DOM
+        animateCounter('arrivals-count', arribosCount);
+        animateCounter('departures-count', salidasCount);
+        animateCounter('routes-count', navierasCount);
+        animateCounter('vessels-count', buquesCount);
+        
+        // Sincronizar clones del carrusel
+        syncCloneValues();
+        
+        console.log('✅ Métricas actualizadas:', {
+            arribos: arribosCount,
+            salidas: salidasCount,
+            navieras: navierasCount,
+            buques: buquesCount
+        });
+        
+    } catch (error) {
+        console.error('❌ Error actualizando métricas:', error);
+    }
+}
 
 // Carrusel infinito que nunca deja espacios vacíos
 let currentSlide = 2; // Empezamos en la posición 2 (primera tarjeta original)
