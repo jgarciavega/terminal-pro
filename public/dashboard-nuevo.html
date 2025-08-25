@@ -58,7 +58,7 @@
         <div class="status-panel">
           <div class="system-status">
             <div class="status-light active"></div>
-            <span>Sistema Operativo</span>
+            <span>Sistema Operativo Integral</span>
           </div>
           <div class="live-clock" id="mega-clock">00:00:00</div>
           <div class="date-display" id="mega-date">Cargando...</div>
@@ -1073,8 +1073,8 @@ body {
 
 .mega-icon-container {
   position: relative;
-  width: 160px;
-  height: 160px;
+  width: 260px;
+  height: 260px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1097,26 +1097,25 @@ body {
 }
 
 .pulsing-core {
-  font-size: 48px;
+  font-size: 80px;
   background: rgba(255,255,255,0.15);
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(30px);
   border-radius: 50%;
-  width: 80px;
-  height: 80px;
+  width: 160px;
+  height: 160px;
   display: flex;
   align-items: center;
   justify-content: center;
   animation: megaPulse 3s ease-in-out infinite;
   box-shadow: 
-    0 0 30px rgba(255,255,255,0.3),
-    inset 0 0 20px rgba(255,255,255,0.1);
+    0 0 60px rgba(255,255,255,0.3),
+    inset 0 0 40px rgba(255,255,255,0.1);
 }
 
 .api-logo {
-  width: 140px;
-  height: 140px;
+  width: 200px;
+  height: 200px;
   object-fit: contain;
-  
   animation: logoSpin 8s linear infinite;
 }
 
@@ -1167,7 +1166,30 @@ body {
   text-shadow: 
     2px 2px 4px rgba(29, 17, 169, 0.5),
     0 0 20px rgba(114, 47, 55, 1);
-  line-height: 0.9;
+  line-height: 1;
+  position: relative;
+}
+
+.mega-title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  height: 5px;
+  width: 0;
+  background: linear-gradient(90deg, #FFD700 60%, #fffbe6 100%);
+  border-radius: 3px;
+  box-shadow: 0 0 8px 2px #FFD70099;
+  animation: gold-underline-move 4s cubic-bezier(0.7,0,0.3,1) infinite;
+}
+
+@keyframes gold-underline-move {
+  0% { width: 0; left: 0; opacity: 1; }
+  70% { width: 100%; left: 0; opacity: 1; }
+  80% { width: 100%; left: 0; opacity: 1; }
+  90% { width: 100%; left: 0; opacity: 1; }
+  91% { width: 100%; left: 0; opacity: 0; }
+  100% { width: 0; left: 100%; opacity: 0; }
 }
 
  .title-line-1,
@@ -1193,35 +1215,11 @@ body {
   color: rgb(0,26,68);
   background: none;
   border: 2.5px solid rgb(115,35,75);
-  border-radius: 6px;
+  border-radius: 12px;
   margin: 0 2px;
   padding: 0 6px;
   box-sizing: border-box;
-  animation: wave-title 2.2s infinite linear;
   margin-bottom: 10px;
-}
-.title-line-1 span:nth-child(1) { animation-delay: 0s; }
-.title-line-1 span:nth-child(2) { animation-delay: 0.1s; }
-.title-line-1 span:nth-child(3) { animation-delay: 0.2s; }
-.title-line-1 span:nth-child(4) { animation-delay: 0.3s; }
-.title-line-1 span:nth-child(5) { animation-delay: 0.4s; }
-.title-line-1 span:nth-child(6) { animation-delay: 0.5s; }
-.title-line-1 span:nth-child(7) { animation-delay: 0.6s; }
-.title-line-1 span:nth-child(8) { animation-delay: 0.7s; }
-.title-line-2 span:nth-child(1) { animation-delay: 0.1s; }
-.title-line-2 span:nth-child(2) { animation-delay: 0.2s; }
-.title-line-2 span:nth-child(3) { animation-delay: 0.3s; }
-@keyframes wave-title {
-  0% { transform: translateY(0) scale(1.01); }
-  10% { transform: translateY(-8px) scale(1.04); }
-  20% { transform: translateY(-16px) scale(1.07); }
-  30% { transform: translateY(-8px) scale(1.04); }
-  40% { transform: translateY(0) scale(1.01); }
-  50% { transform: translateY(8px) scale(1.04); }
-  60% { transform: translateY(16px) scale(1.07); }
-  70% { transform: translateY(8px) scale(1.04); }
-  80% { transform: translateY(0) scale(1.01); }
-  100% { transform: translateY(0) scale(1.01); }
 }
 
 
