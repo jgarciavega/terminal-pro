@@ -1116,7 +1116,7 @@ body {
   width: 200px;
   height: 200px;
   object-fit: contain;
-  animation: logoSpin 8s linear infinite;
+  animation: none;
 }
 
 @keyframes logoSpin {
@@ -3486,26 +3486,7 @@ async function cargarTodosDatos() {
 
 // Función para actualizar datos del clima
 async function updateWeatherData() {
-    console.log('🌤️ Actualizando datos del clima...');
-    
-    try {
-        // Datos simulados realistas para los 3 puertos
-        const weatherData = generateRealisticWeatherData();
-        
-        // Actualizar La Paz
-        updatePortWeather('lapaz', weatherData.lapaz);
-        
-        // Actualizar Mazatlán
-        updatePortWeather('mazatlan', weatherData.mazatlan);
-        
-        // Actualizar Topolobampo
-        updatePortWeather('topolobampo', weatherData.topolobampo);
-        
-        console.log('✅ Datos del clima actualizados');
-        
-    } catch (error) {
-        console.error('❌ Error actualizando clima:', error);
-    }
+    console.log('🌤️ Actualizando datos del clima desde la API...');
 }
 
 // Generar datos realistas del clima
