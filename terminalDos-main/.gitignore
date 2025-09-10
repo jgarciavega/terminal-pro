@@ -1,0 +1,97 @@
+# =======================================
+# Node.js
+# =======================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+!package-lock.json
+
+# =======================================
+# Environment & Config
+# =======================================
+.env
+.env.local
+.env.production
+
+# =======================================
+# Logs & temp files
+# =======================================
+*.log
+*.temp
+*.tmp
+
+# =======================================
+# Sistema operativo
+# =======================================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# =======================================
+# Editor específico
+# =======================================
+.vscode/settings.json
+*.swp
+*.swo
+*~
+
+# =======================================
+# Accesos directos Windows
+# =======================================
+*.lnk
+
+# =======================================
+# Terminal Dos específico
+# =======================================
+# Archivos de scripts legacy (si se recrean)
+Terminal-Dos*.bat
+Terminal-Dos*.vbs
+Terminal-Dos*.ps1
+Abrir-Dashboard.*
+Create-*.*
+Start-*.*
+Launch-*.*
+
+# Carpetas de compilación
+/dist/
+/build/
+/out/
+/release/
+
+# Archivos de caché de empaquetadores
+.cache/
+.tmp/
+
+# =======================================
+# Entornos y configuraciones locales
+# =======================================
+.env
+.env.*.local
+*.local
+
+# Archivos de lock (depende de cuál uses)
+package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+# =======================================
+# Visual Studio Code
+# =======================================
+.vscode/
+.history/
+
+# =======================================
+# Sistema operativo y basura general
+# =======================================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# =======================================
+# Backups y archivos temporales
+# =======================================
+*.bak
+*.tmp
+*.swp

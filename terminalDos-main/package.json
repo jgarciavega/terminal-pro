@@ -1,0 +1,57 @@
+{
+  "name": "terminaldos",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Sistema web para monitoreo portuario en tiempo real",
+  "main": "api/server.js",
+  "scripts": {
+    "start": "node api/server.js",
+    "dev": "node api/server.js",
+    "api": "node api/server.js",
+    "test": "node revisar-bd-completo.js"
+  },
+  "keywords": [
+    "web-app",
+    "dashboard",
+    "api",
+    "node",
+    "mysql",
+    "puerto",
+    "express",
+    "weather",
+    "maritime",
+    "shipping"
+  ],
+  "author": "Jorge Ignacio",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.10.0",
+    "dotenv": "^16.5.0",
+    "express": "^4.19.2",
+    "mysql2": "^3.14.1"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.0",
+    "electron": "^37.1.0",
+    "electron-builder": "^26.0.12",
+    "nodemon": "^3.1.4"
+  },
+  "build": {
+    "appId": "com.jorge.terminaldos",
+    "productName": "Terminal Dos",
+    "directories": {
+      "buildResources": "assets"
+    },
+    "files": [
+      "**/*",
+      "!node_modules/**/*",
+      "node_modules/**/*"
+    ],
+    "win": {
+      "target": "portable",
+      "artifactName": "${productName}-${version}.${ext}",
+      "signAndEditExecutable": false
+    },
+    "publish": null
+  }
+}

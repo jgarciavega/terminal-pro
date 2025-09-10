@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificación Final - Terminal DOS</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .section {
+            background: rgba(255,255,255,0.1);
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+        th {
+            background: rgba(255,255,255,0.2);
+            font-weight: bold;
+        }
+        .naviera-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+        .status-badge {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .confirmado { background: #4CAF50; }
+        .programado { background: #2196F3; }
+        .en-transito { background: #FF9800; }
+        .esperando { background: #9C27B0; }
+        .embarcando { background: #00BCD4; }
+        .listo { background: #8BC34A; }
+        .cargando { background: #607D8B; }
+        .preparando { background: #795548; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚢 Verificación Final - Terminal DOS</h1>
+        
+        <div class="section">
+            <h2>📥 ARRIBOS</h2>
+            <table id="arribos-table">
+                <thead>
+                    <tr>
+                        <th>Logo</th>
+                        <th>Naviera</th>
+                        <th>Buque</th>
+                        <th>Origen</th>
+                        <th>Destino</th>
+                        <th>Hora</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody id="arribos-body">
+                    <tr><td colspan="7">Cargando...</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>📤 SALIDAS</h2>
+            <table id="salidas-table">
+                <thead>
+                    <tr>
+                        <th>Logo</th>
+                        <th>Naviera</th>
+                        <th>Buque</th>
+                        <th>Origen</th>
+                        <th>Destino</th>
+                        <th>Hora</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody id="salidas-body">
+                    <tr><td colspan="7">Cargando...</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        function getStatusClass(estado) {
+            const estado_lower = estado.toLowerCase().replace(/\s+/g, '-');
+            const map = {
+                'confirmado': 'confirmado',
+                'programado': 'programado',
+                'en-transito': 'en-transito',
+                'en-tránsito': 'en-transito',
+                'esperando': 'esperando',
+                'embarcando': 'embarcando',
+                'listo-para-zarpar': 'listo',
+                'cargando': 'cargando',
+                'preparando': 'preparando'
+            };
+            return map[estado_lower] || 'programado';
+        }
+
+        async function cargarArribos() {
+            try {
+                const response = await fetch('/api/arribos');
+                const data = await response.json();
+                
+                if (data.success && data.data) {
+                    const tbody = document.getElementById('arribos-body');
+                    tbody.innerHTML = data.data.map(arribo => {
+                        const logoSrc = arribo.naviera === 'Baja Ferries' ? 'imagenes/logo_bf.png' : 'imagenes/TMC.png';
+                        const statusClass = getStatusClass(arribo.estado);
+                        
+                        return `
+                            <tr>
+                                <td><img src="${logoSrc}" alt="${arribo.naviera}" class="naviera-logo"></td>
+                                <td><strong>${arribo.naviera}</strong></td>
+                                <td>${arribo.buque}</td>
+                                <td>${arribo.origen}</td>
+                                <td>${arribo.destino}</td>
+                                <td>${arribo.hora}</td>
+                                <td><span class="status-badge ${statusClass}">${arribo.estado}</span></td>
+                            </tr>
+                        `;
+                    }).join('');
+                }
+            } catch (error) {
+                console.error('Error cargando arribos:', error);
+            }
+        }
+
+        async function cargarSalidas() {
+            try {
+                const response = await fetch('/api/salidas');
+                const data = await response.json();
+                
+                if (data.success && data.data) {
+                    const tbody = document.getElementById('salidas-body');
+                    tbody.innerHTML = data.data.map(salida => {
+                        const logoSrc = salida.naviera === 'Baja Ferries' ? 'imagenes/logo_bf.png' : 'imagenes/TMC.png';
+                        const statusClass = getStatusClass(salida.estado);
+                        
+                        return `
+                            <tr>
+                                <td><img src="${logoSrc}" alt="${salida.naviera}" class="naviera-logo"></td>
+                                <td><strong>${salida.naviera}</strong></td>
+                                <td>${salida.buque}</td>
+                                <td>${salida.origen}</td>
+                                <td>${salida.destino}</td>
+                                <td>${salida.hora}</td>
+                                <td><span class="status-badge ${statusClass}">${salida.estado}</span></td>
+                            </tr>
+                        `;
+                    }).join('');
+                }
+            } catch (error) {
+                console.error('Error cargando salidas:', error);
+            }
+        }
+
+        // Cargar datos al inicio
+        window.addEventListener('load', () => {
+            cargarArribos();
+            cargarSalidas();
+        });
+    </script>
+</body>
+</html>
